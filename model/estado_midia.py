@@ -21,7 +21,6 @@ class Estado_Contexto:
         self._estado_atual.get_nome()
 
 
-
 class Estado_midia(ABC):    
     @abstractmethod
     def iniciar(self, midia):
@@ -55,13 +54,13 @@ class Nao_iniciado(Estado_midia):
         return "Não Iniciado"
     
     def iniciar(self, midia):
-        pass
+        midia.set_estado(Em_progresso())
 
     def pausar(self, midia):
         print("Não é possivel pausar, mídia não iniciada")
 
     def concluir(self, midia):
-        midia.set_estado(Em_progresso())
+        print("Não é possivel concluir, mídia não iniciada")
 
     def abandonar(self, midia):
         midia.set_estado(Abandonado())
@@ -71,31 +70,62 @@ class Em_progresso(Estado_midia):
         return "Em Progresso"
     
     def iniciar(self, midia):
-        pass
+        print("Não é possivel iniciar, mídia já iniciada")
 
     def pausar(self, midia):
-        pass
+        midia.set_estado(Pausa())
 
     def concluir(self, midia):
         midia.set_estado(Concluido())
+
+    def abandonar(self, midia):
+        midia.set_estado(Abandonado())
 
 class Concluido(Estado_midia):
     def get_nome(self):
         return "Concluído"
 
+    def iniciar(self, midia):
+        print("Mídia já concluida")
+
+    def pausar(self, midia):
+        midia.set_estado(Pausa())
+
+    def concluir(self, midia):
+        midia.set_estado(Concluido())
+
+    def abandonar(self, midia):
+        print("Mídia já concluida")
+
 class Pausa(Estado_midia):
     def get_nome(self):
         return "Em Pausa"
+    
+    def iniciar(self, midia):
+        midia.set_estado(Em_progresso())
+
+    def pausar(self, midia):
+        print("Midia já em pausa")
+
+    def concluir(self, midia):
+        print("Midia em pausa, inicie para poder concluir")
+
+    def abandonar(self, midia):
+        midia.set_estado(Abandonado())
 
 class Abandonado(Estado_midia):
     def get_nome(self):
         return "Abandonado"
+    
     def iniciar(self, midia):
-        pass
+        midia.set_estado(Em_progresso())
 
     def pausar(self, midia):
-        pass
+        midia.set_estado(Pausa())
 
     def concluir(self, midia):
-        midia.set_estado(Concluido())
+        print("Inicie para poder concluir")
+    
+    def abandonar(self, midia):
+        print("Midia já abandonada")
     
