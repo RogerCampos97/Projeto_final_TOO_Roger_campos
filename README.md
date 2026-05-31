@@ -5,6 +5,8 @@ Trabalho final disciplina Técnologia de Orienteção a objetos
 
 ## Diagrama de classes (inserido como imagem ou link)
 
+[Diagrama de classes Google drive](https://drive.google.com/file/d/1XKTWC-wHYKDuiT75O2NnYYs8aXy5QYvm/view?usp=sharing)
+
 ## Descrição de cada classe e pilar da POO utilizado
 
 ## Explicação dos padrões de projeto aplicados (Factory e o adicional)
