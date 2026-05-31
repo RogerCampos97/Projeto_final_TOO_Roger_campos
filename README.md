@@ -5,7 +5,7 @@ Trabalho final disciplina Técnologia de Orienteção a objetos
 
 ## Diagrama de classes (inserido como imagem ou link)
 
-[Diagrama de classes Google drive](https://drive.google.com/file/d/1XKTWC-wHYKDuiT75O2NnYYs8aXy5QYvm/view?usp=sharing)
+[Diagrama de classes Google drive](https://drive.google.com/file/d/1GdKqIiZnpRtiNrhbJmzDA9U1gHkONiFz/view?usp=sharing)
 
 ## Descrição de cada classe e pilar da POO utilizado
 
@@ -27,8 +27,8 @@ Principal Aprendizado:
 
 [ ] Nenhuma IA foi utilizada na elaboração deste código.
 
-[ ] Utilizei IA como ferramenta de apoio.
+[X] Utilizei IA como ferramenta de apoio.
 
-Ferramenta(s): (ex: ChatGPT, Claude Opus 4.6, Gemini Pro 3.1, ...)
-Finalidade:
+Ferramenta(s): gemini pro 
+Finalidade: ajuda na idealização inicial das classes (apenas auxilio inicial)
 Validação: Declaro que todo o código gerado foi lido, testado e e ajustado conforme as necessidades específicas do projeto e da disciplina. A responsabilidade pela arquitetura, decisões de design e correção do código é de minha total responsabilidade.
