@@ -15,11 +15,11 @@ Trabalho final disciplina Técnologia de Orienteção a objetos
 
 ## Detalhamento de Aprendizado
 
-Nesta seção, explique como se deu o seu aprendizado durante o desenvolvimento
-Dificuldades Encontradas: (ex: implementação do Padrão de Projeto XXX)
-Como resolvi:
+### Dificuldades Encontradas: 
+- implementação do Padrão State
+    - Como resolvi: pesquisei termos que vi no site refactoring guru no google e gemini até eu conseguir compreender como poderia fazer as trocas de estado de forma correta usando o padrão state.
 
-Principal Aprendizado:
+### Principal Aprendizado:
 
 ## Declaração de Uso de IA
 
@@ -30,5 +30,10 @@ Principal Aprendizado:
 [X] Utilizei IA como ferramenta de apoio.
 
 Ferramenta(s): gemini pro 
-Finalidade: ajuda na idealização inicial das classes (apenas auxilio inicial)
+Finalidade: 
+
+* ajuda na idealização inicial das classes (apenas auxilio inicial)
+
+* ajuda na criação do padrão state (retirada de duvidas baseado no [padrão state e class context](https://refactoring.guru/design-patterns/state/python/example))
+
 Validação: Declaro que todo o código gerado foi lido, testado e e ajustado conforme as necessidades específicas do projeto e da disciplina. A responsabilidade pela arquitetura, decisões de design e correção do código é de minha total responsabilidade.

@@ -1,5 +1,5 @@
 from model.Midia import Midia
-from model.Estado_midia import Estado_Contexto
+
 
 
 if __name__ == "__main__":
