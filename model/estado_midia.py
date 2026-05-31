@@ -54,6 +54,7 @@ class Nao_iniciado(Estado_midia):
         return "Não Iniciado"
     
     def iniciar(self, midia):
+        print("Midia iniciada")
         midia.set_estado(Em_progresso())
 
     def pausar(self, midia):

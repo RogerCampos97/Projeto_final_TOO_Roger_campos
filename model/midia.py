@@ -1,10 +1,11 @@
-from abc import ABC, abstractmethod
+#from abc import ABC, abstractmethod
+from model.Estado_midia import Estado_Contexto
 
-class Midia(ABC):
-    def __init__(self, titulo: str, tipo):
+class Midia():
+    def __init__(self, titulo: str):
         self.titulo = titulo
-        self._tipo = tipo# alterar dps p tipo
-        #self.estado_atual = Estado_atual
+        #self._tipo = tipo# alterar dps p tipo
+        self.estado_atual = Estado_Contexto()
         #self.data_inclusao: date
         #self.data_atualizado: date
         #self.genero: list[Genero] = []
@@ -13,10 +14,10 @@ class Midia(ABC):
     
     @property
     def titulo(self):
-        return self.titulo
-    @property
+        return self._titulo
+    """ @property
     def tipo(self):
-        return self._tipo
+        return self._tipo """
     @property
     def comentario(self):
         return self._comentario
@@ -28,7 +29,7 @@ class Midia(ABC):
         novo_nome = " ".join(add_titulo.split())
         if not add_titulo:
             raise ValueError("O nome não pode ser vazio!")
-        self.titulo = add_titulo
+        self._titulo = add_titulo
 
     @comentario.setter
     def comentario(self, add_comment):
@@ -39,13 +40,13 @@ class Midia(ABC):
             raise ValueError("O nome não pode ser vazio!")
         self.titulo = add_comment
 
-    def __eq__(self, outro:object) -> bool:
+    """ def __eq__(self, outro:object) -> bool:
         if not isinstance(outro, Midia):
             return False
         return (self.titulo == outro.titulo 
-                and self.tipo == outro.tipo)
+                and self.tipo == outro.tipo) """
     
-    @abstractmethod
+    #@abstractmethod
     def __str__(self):
         return (f"{self.titulo}")
     
