@@ -1,13 +1,13 @@
 from abc import ABC, abstractmethod
-from model.Estado_midia import Estado_Contexto
 from datetime import datetime, timedelta
+from midia.Estado_midia import Estado_Contexto
 
 class Midia(ABC):
     def __init__(self, titulo: str):
         self.titulo = titulo
         self.estado_atual = Estado_Contexto()
-        self.data_inclusao: datetime
-        self.data_atualizado: datetime
+        self._data_inclusao: datetime
+        self._data_atualizado: datetime
         #self.generos: list[Genero] = []
         #self.plataforma_acesso = list[Plataformas]
         self._comentario = None
@@ -15,12 +15,15 @@ class Midia(ABC):
     @property
     def titulo(self):
         return self._titulo
-    """ @property
-    def tipo(self):
-        return self._tipo """
     @property
     def comentario(self):
         return self._comentario
+    @property
+    def data_inclusao(self):
+        return self._data_inclusao
+    @property
+    def data_atualizado(self):
+        return self._data_atualizado
     
     @titulo.setter
     def titulo(self, add_titulo):
@@ -39,6 +42,18 @@ class Midia(ABC):
         if not add_comment:
             raise ValueError("O nome não pode ser vazio!")
         self.titulo = add_comment
+    
+    @data_inclusao.setter
+    def data_inclusao(self, add_data):
+        if not isinstance(add_data, datetime):
+            raise TypeError("Deve ser data!")
+        self.data_inclusao = add_data
+    
+    @data_atualizado.setter
+    def data_atualizado(self, add_data):
+        if not isinstance(add_data, datetime):
+            raise TypeError("Deve ser data!")
+        self.data_atualizado = add_data
 
     @abstractmethod
     def __eq__(self, outro:object) -> bool:
@@ -54,18 +69,7 @@ class Midia(ABC):
         return (f"{self.titulo}")
     
 
-class livros(Midia):
-    def __init__(self, titulo: str):
-        super().__init__(titulo)
-class Mangas(Midia):
-    def __init__(self, titulo: str):
-        super().__init__(titulo)
-class Animes(Midia):
-    def __init__(self, titulo: str):
-        super().__init__(titulo)
-class Seriados(Midia):
-    def __init__(self, titulo: str):
-        super().__init__(titulo)
-class Jogos(Midia):
-    def __init__(self, titulo: str):
-        super().__init__(titulo)
+
+
+
+
