@@ -55,14 +55,14 @@ class Midia(ABC):
             raise TypeError("Deve ser data!")
         self.data_atualizado = add_data
 
-    @abstractmethod
+    #@abstractmethod
     def __eq__(self, outro:object) -> bool:
-        pass
-        '''
+        #pass
+    
         if not isinstance(outro, Midia):
             return False
         return (self.titulo == outro.titulo)
-        '''
+        
         
     @abstractmethod
     def __str__(self):
