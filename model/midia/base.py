@@ -53,9 +53,7 @@ class Midia(ABC):
     def __str__(self):
         return (f"{self.titulo}")
     
-class filmes(Midia):
-    def __init__(self, titulo: str):
-        super().__init__(titulo)
+
 class livros(Midia):
     def __init__(self, titulo: str):
         super().__init__(titulo)

@@ -1,4 +1,5 @@
-from model.Midia import Midia
+from model.midia.base import Midia
+from model.midia import filmes
 
 
 
