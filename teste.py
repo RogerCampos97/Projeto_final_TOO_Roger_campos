@@ -1,13 +1,14 @@
 from model.midia.base import Midia
-from model.midia import filmes
+from model.midia.filmes import criar_filme 
 
+#def cria_midia(titulo):
 
 
 if __name__ == "__main__":
-    livro_teste = Midia("livro 1")
+    filme_teste = criar_filme("filme 01")
 
-    print(f"{livro_teste}")
-
-    #livro_teste.estado_atual.iniciar()
-    livro_teste.estado_atual.concluir()
-    
+    print(f"{filme_teste}")
+    """ 
+    filme_teste.estado_atual.iniciar()
+    filme_teste.estado_atual.concluir()
+     """

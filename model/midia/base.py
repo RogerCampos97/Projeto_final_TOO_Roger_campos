@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from datetime import datetime, timedelta
-from midia.Estado_midia import Estado_Contexto
+from model.midia.Estado_midia import Estado_Contexto
 
 class Midia(ABC):
     def __init__(self, titulo: str):
