@@ -24,8 +24,12 @@ class Jogos(Midia):
         msg = super().__str__()
         msg += (f", {self.__class__.__name__}")
         return msg
-
-class Livros(Midia):
+class criar_livro(Criador_Midia):
+    def criar_midia(self, titulo) -> Midia:
+        super().criar_midia(titulo)
+        return Livro(titulo)
+    
+class Livro(Midia):
     def __init__(self, titulo: str):
         super().__init__(titulo)
     
@@ -37,7 +41,12 @@ class Livros(Midia):
         msg += (f", {self.__class__.__name__}")
         return msg
     
-class Mangas(Midia):
+class criar_Manga(Criador_Midia):
+    def criar_midia(self, titulo) -> Midia:
+        super().criar_midia(titulo)
+        return Manga(titulo)
+    
+class Manga(Midia):
     def __init__(self, titulo: str):
         super().__init__(titulo)
     
@@ -48,7 +57,6 @@ class Mangas(Midia):
         msg = super().__str__()
         msg += (f", {self.__class__.__name__}")
         return msg
-
 
 class filmes(Midia):
     def __init__(self, titulo: str):
