@@ -63,7 +63,10 @@ class Midia(ABC):
             return False
         return (self.titulo == outro.titulo)
         
-        
+    @abstractmethod
+    def get_nome(self):
+        pass
+
     @abstractmethod
     def __str__(self):
         return (f"{self.titulo}")
