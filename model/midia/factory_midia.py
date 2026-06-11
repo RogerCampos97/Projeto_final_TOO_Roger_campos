@@ -14,3 +14,12 @@ class Criador_Midia(ABC):
         """
         pass
 
+    @staticmethod
+    def nova_midia(titulo: str):
+        '''
+        aqui logica factory
+        '''
+
+        midia = Criador_Midia.criar_midia(titulo)
+
+        return midia
