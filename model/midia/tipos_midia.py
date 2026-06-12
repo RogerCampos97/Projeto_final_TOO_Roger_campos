@@ -1,93 +1,141 @@
 from .midia import Midia
-from .factory_midia import Criador_Midia
+from .factory_midia import factory_Midia
 
-class Animes(Midia):
-    def __init__(self, titulo: str):
-        super().__init__(titulo)
+def nova_midia(titulo: str, tipo: str):
+        '''
+        aqui logica que define qual tipo de midia vai ser criada
+            Args: titulo
+            Returns: objeto do tipo midia ou erro caso tipo inválido
+        '''
+        tipo = tipo.strip().lower()
+        match tipo:
+            case "anime":
+                midia = criar_Anime(titulo).factory_midia(titulo)
+            case "jogo":
+                midia = criar_Jogo(titulo).factory_midia(titulo)
+            case "livro":
+                midia = criar_livro(titulo).factory_midia(titulo)
+            case "mangá" | "manga":
+                midia = criar_Manga(titulo).factory_midia(titulo)
+            case "filme":
+                midia = criar_filme(titulo).factory_midia(titulo)
+            case "seriado" | "seriados":
+                midia = criar_seriados(titulo).factory_midia(titulo)
+            case _:
+                raise Exception("Não foi possivel criar Midia")
+        return midia
 
-    def get_nome(self):
-        return "Animes"
-    
-    def __str__(self):
-        msg = super().__str__()
-        msg += (f", {self.__class__.__name__}")
-        return msg
 
-class Jogos(Midia):
-    def __init__(self, titulo: str):
-        super().__init__(titulo)
 
-    def get_nome(self):
-        return "Jogos"
+obj = nova_midia("teste", "anime")
+print(obj.get_nome())
 
-    def __str__(self):
-        msg = super().__str__()
-        msg += (f", {self.__class__.__name__}")
-        return msg
-class criar_livro(Criador_Midia):
+
+
+
+#-------------------------------------------------------------- 
+#                   Anime
+# -------------------------------------------------------------
+class criar_Anime(factory_Midia): 
+    # classe concreta usada pelo factory para criar o objeto Anime
     def factory_midia(self, titulo) -> Midia:
-        super().factory_midia(titulo)
+        return Anime(titulo)
+    
+class Anime(Midia):
+    def __init__(self, titulo: str): 
+        # caso não tiver nenhum atributo a mais ou algum codigo 
+        # a ser feito na inicialização posso omitir o init, 
+        # é usado o da classe abstrata
+        super().__init__(titulo)
+    def get_nome(self) -> str:
+        return "Anime"
+    def __eq__(self, outro:object):
+        if not isinstance(outro, Anime):
+                return False
+        return (self.titulo == outro.titulo)
+#-------------------------------------------------------------- 
+#                   Jogo
+# ------------------------------------------------------------- 
+class criar_Jogo(factory_Midia): 
+    # classe concreta usada pelo factory para criar o objeto Anime
+    def factory_midia(self, titulo) -> Midia:
+        return Jogo(titulo)
+
+class Jogo(Midia):
+    def __init__(self, titulo: str):
+        super().__init__(titulo)
+    def get_nome(self):
+        return "Jogo"
+    def __eq__(self, outro:object):
+        if not isinstance(outro, Jogo):
+                return False
+        return (self.titulo == outro.titulo)
+    
+#-------------------------------------------------------------- 
+#                   Livro
+# ------------------------------------------------------------- 
+class criar_livro(factory_Midia):
+    def factory_midia(self, titulo) -> Midia:
         return Livro(titulo)
     
 class Livro(Midia):
     def __init__(self, titulo: str):
         super().__init__(titulo)
-    
     def get_nome(self):
-        return "Livros"
-
-    def __str__(self):
-        msg = super().__str__()
-        msg += (f", {self.__class__.__name__}")
-        return msg
-    
-class criar_Manga(Criador_Midia):
+        return "Livro"
+    def __eq__(self, outro:object):
+        if not isinstance(outro, Livro):
+                return False
+        return (self.titulo == outro.titulo)
+#-------------------------------------------------------------- 
+#                   Mangá
+# -------------------------------------------------------------  
+class criar_Manga(factory_Midia):
     def factory_midia(self, titulo) -> Midia:
-        super().factory_midia(titulo)
         return Manga(titulo)
     
 class Manga(Midia):
     def __init__(self, titulo: str):
         super().__init__(titulo)
-    
     def get_nome(self):
-        return "Mangás"
+        return "Mangá"
+    def __eq__(self, outro:object):
+        if not isinstance(outro, Manga):
+                return False
+        return (self.titulo == outro.titulo)
+#-------------------------------------------------------------- 
+#                   Filme
+# ------------------------------------------------------------- 
+class criar_filme(factory_Midia):
+    def factory_midia(self, titulo) -> Midia:
+        return filme(titulo)
     
-    def __str__(self):
-        msg = super().__str__()
-        msg += (f", {self.__class__.__name__}")
-        return msg
-
-class filmes(Midia):
+class filme(Midia):
     def __init__(self, titulo: str):
         super().__init__(titulo)
-    
     def get_nome(self):
-        return "Filmes"
-    
-    def __str__(self):
-        msg = super().__str__()
-        msg += (f", {self.__class__.__name__}")
-        return msg
-
-class criar_filme(Criador_Midia):
+        return "Filme"
+    def __eq__(self, outro:object):
+        if not isinstance(outro, filme):
+                return False
+        return (self.titulo == outro.titulo)
+#-------------------------------------------------------------- 
+#                   Sériados
+# ------------------------------------------------------------- 
+class criar_seriados(factory_Midia):
     def factory_midia(self, titulo) -> Midia:
-        super().factory_midia(titulo)
-        return filmes(titulo)
-
-class criar_seriados(Criador_Midia):
-    def factory_midia(self, titulo) -> Midia:
-        super().factory_midia(titulo)
-        return Seriados(titulo)
+        return Seriado(titulo)
     
-class Seriados(Midia):
+class Seriado(Midia):
     def __init__(self, titulo: str):
         super().__init__(titulo)
-    
     def get_nome(self):
         return "Seriados"
+    def __eq__(self, outro:object):
+        if not isinstance(outro, Seriado):
+                return False
+        return (self.titulo == outro.titulo)
+    
 
-    def __str__(self):
-        msg = super().__str__()
-        msg += (f", {self.__class__.__name__}")
-        return msg
+
+#obg  = factory_Midia.nova_midia("teste")
