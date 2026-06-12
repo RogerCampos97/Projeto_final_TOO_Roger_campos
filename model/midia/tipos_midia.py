@@ -1,4 +1,4 @@
-from .base import Midia
+from .midia import Midia
 from .factory_midia import Criador_Midia
 
 class Animes(Midia):
@@ -25,8 +25,8 @@ class Jogos(Midia):
         msg += (f", {self.__class__.__name__}")
         return msg
 class criar_livro(Criador_Midia):
-    def criar_midia(self, titulo) -> Midia:
-        super().criar_midia(titulo)
+    def factory_midia(self, titulo) -> Midia:
+        super().factory_midia(titulo)
         return Livro(titulo)
     
 class Livro(Midia):
@@ -42,8 +42,8 @@ class Livro(Midia):
         return msg
     
 class criar_Manga(Criador_Midia):
-    def criar_midia(self, titulo) -> Midia:
-        super().criar_midia(titulo)
+    def factory_midia(self, titulo) -> Midia:
+        super().factory_midia(titulo)
         return Manga(titulo)
     
 class Manga(Midia):
@@ -71,13 +71,13 @@ class filmes(Midia):
         return msg
 
 class criar_filme(Criador_Midia):
-    def criar_midia(self, titulo) -> Midia:
-        super().criar_midia(titulo)
+    def factory_midia(self, titulo) -> Midia:
+        super().factory_midia(titulo)
         return filmes(titulo)
 
 class criar_seriados(Criador_Midia):
-    def criar_midia(self, titulo) -> Midia:
-        super().criar_midia(titulo)
+    def factory_midia(self, titulo) -> Midia:
+        super().factory_midia(titulo)
         return Seriados(titulo)
     
 class Seriados(Midia):

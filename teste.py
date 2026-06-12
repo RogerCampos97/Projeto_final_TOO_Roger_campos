@@ -1,4 +1,4 @@
-from model.midia.base import Midia
+from model.midia.midia import Midia
 from model.midia.filmes import criar_filme 
 
 #def cria_midia(titulo):
