@@ -3,6 +3,11 @@ from abc import ABC, abstractmethod
 
 # o estado contexto faz a troca dos estados e o repasse do que deve ser feito para o estado correto
 class Estado_Contexto:
+    '''
+    classe serve de interface entre os estados e a mídia, 
+    quando preciso trocar de estado sempre chamo ele, 
+    nunca nemhum dos estados.
+    '''
     def __init__(self) -> None:
         self._estado_atual = Nao_iniciado()
 
