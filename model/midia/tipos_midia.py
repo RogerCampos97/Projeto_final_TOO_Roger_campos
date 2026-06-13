@@ -1,14 +1,7 @@
 from .midia import Midia
-from .factory_midia import factory_Midia
-
 #-------------------------------------------------------------- 
 #                   Anime
 # -------------------------------------------------------------
-class criar_Anime(factory_Midia): 
-    # classe concreta usada pelo factory para criar o objeto Anime
-    def factory_midia(self, titulo) -> Midia:
-        return Anime(titulo)
-    
 class Anime(Midia):
     def __init__(self, titulo: str): 
         # caso não tiver nenhum atributo a mais ou algum codigo 
@@ -24,11 +17,6 @@ class Anime(Midia):
 #-------------------------------------------------------------- 
 #                   Jogo
 # ------------------------------------------------------------- 
-class criar_Jogo(factory_Midia): 
-    # classe concreta usada pelo factory para criar o objeto Anime
-    def factory_midia(self, titulo) -> Midia:
-        return Jogo(titulo)
-
 class Jogo(Midia):
     def __init__(self, titulo: str):
         super().__init__(titulo)
@@ -41,11 +29,7 @@ class Jogo(Midia):
     
 #-------------------------------------------------------------- 
 #                   Livro
-# ------------------------------------------------------------- 
-class criar_livro(factory_Midia):
-    def factory_midia(self, titulo) -> Midia:
-        return Livro(titulo)
-    
+# -------------------------------------------------------------   
 class Livro(Midia):
     def __init__(self, titulo: str):
         super().__init__(titulo)
@@ -58,10 +42,6 @@ class Livro(Midia):
 #-------------------------------------------------------------- 
 #                   Mangá
 # -------------------------------------------------------------  
-class criar_Manga(factory_Midia):
-    def factory_midia(self, titulo) -> Midia:
-        return Manga(titulo)
-    
 class Manga(Midia):
     def __init__(self, titulo: str):
         super().__init__(titulo)
@@ -74,10 +54,6 @@ class Manga(Midia):
 #-------------------------------------------------------------- 
 #                   Filme
 # ------------------------------------------------------------- 
-class criar_filme(factory_Midia):
-    def factory_midia(self, titulo) -> Midia:
-        return filme(titulo)
-    
 class filme(Midia):
     def __init__(self, titulo: str):
         super().__init__(titulo)
@@ -90,10 +66,6 @@ class filme(Midia):
 #-------------------------------------------------------------- 
 #                   Sériados
 # ------------------------------------------------------------- 
-class criar_seriados(factory_Midia):
-    def factory_midia(self, titulo) -> Midia:
-        return Seriado(titulo)
-    
 class Seriado(Midia):
     def __init__(self, titulo: str):
         super().__init__(titulo)

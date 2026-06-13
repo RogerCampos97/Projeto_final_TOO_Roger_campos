@@ -1,11 +1,11 @@
 from model.midia.midia import Midia
-from model.midia.factory_midia import nova_midia
+from model.midia.factory_midia import factory_Midia
 
 #def cria_midia(titulo):
 
 
 if __name__ == "__main__":
-    filme_teste = nova_midia("filme 01", "filme")
+    filme_teste = factory_Midia.nova_midia("filme 01", "filme")
 
     print(f"{filme_teste}")
 

@@ -63,7 +63,7 @@ class Midia(ABC):
         pass
 
     def __str__(self):
-        return (f"{self.__class__.__name__}")
+        return (f"tipo: {self.__class__.__name__}, nome: {self.titulo}")
     
 
 
