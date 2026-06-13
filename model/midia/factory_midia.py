@@ -1,8 +1,9 @@
 from abc import ABC, abstractmethod
-from .midia import Midia
+#from .midia import Midia
 from .tipos_midia import *
 
-class factory_Midia(ABC):#factory method, responsavel pela criação de cada midia
+class factory_Midia(ABC): 
+    #factory method, responsavel pela criação de cada midia
     def __init__(self, titulo) -> None:
         self.titulo = titulo
    
@@ -28,7 +29,7 @@ class factory_Midia(ABC):#factory method, responsavel pela criação de cada mid
         classe usada como interface para criar a midia,
         usa a classe concreta de cada tipo para fazer isso. 
         Aqui fica a logica que define qual tipo de midia vai ser criada
-        
+
             Args: 
                 titulo = nome da midia
                 tipo = tipo da midia

@@ -1,4 +1,3 @@
-from model.midia.midia import Midia
 from model.midia.factory_midia import factory_Midia
 
 #def cria_midia(titulo):
@@ -11,4 +10,3 @@ if __name__ == "__main__":
 
     filme_teste.estado_atual.iniciar()
     filme_teste.estado_atual.concluir()
-
