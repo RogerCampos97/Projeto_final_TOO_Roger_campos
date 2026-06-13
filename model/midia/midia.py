@@ -3,6 +3,9 @@ from datetime import datetime, timedelta
 from model.midia.Estado_midia import Estado_Contexto
 
 class Midia(ABC):
+    '''
+    Classe abstrata de midia
+    '''
     def __init__(self, titulo: str):
         self.titulo = titulo
         self.estado_atual = Estado_Contexto()

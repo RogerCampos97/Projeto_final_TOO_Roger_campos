@@ -59,27 +59,32 @@ class factory_Midia(ABC):
 # -------------------------------------------------------------
 #Anime
 class criar_Anime(factory_Midia): 
-    # classe concreta usada pelo factory para criar o objeto Anime
+    '''classe concreta usada pelo factory para criar o objeto Anime'''
     def factory_midia(self, titulo) -> Midia:
         return Anime(titulo)
 #jogo
 class criar_Jogo(factory_Midia): 
+    '''classe concreta usada pelo factory para criar o objeto jogo'''
     def factory_midia(self, titulo) -> Midia:
         return Jogo(titulo)
 #livro
 class criar_livro(factory_Midia):
+    '''classe concreta usada pelo factory para criar o objeto livro'''
     def factory_midia(self, titulo) -> Midia:
         return Livro(titulo)
 #mangá 
 class criar_Manga(factory_Midia):
+    '''classe concreta usada pelo factory para criar o objeto mangá'''
     def factory_midia(self, titulo) -> Midia:
         return Manga(titulo)
 #filme
 class criar_filme(factory_Midia):
+    '''classe concreta usada pelo factory para criar o objeto filme'''
     def factory_midia(self, titulo) -> Midia:
         return filme(titulo)
 #seriado
 class criar_seriados(factory_Midia):
+    '''classe concreta usada pelo factory para criar o objeto seriado'''
     def factory_midia(self, titulo) -> Midia:
         return Seriado(titulo)
 
