@@ -1,38 +1,6 @@
 from .midia import Midia
 from .factory_midia import factory_Midia
 
-def nova_midia(titulo: str, tipo: str):
-        '''
-        aqui logica que define qual tipo de midia vai ser criada
-            Args: titulo
-            Returns: objeto do tipo midia ou erro caso tipo inválido
-        '''
-        tipo = tipo.strip().lower()
-        match tipo:
-            case "anime":
-                midia = criar_Anime(titulo).factory_midia(titulo)
-            case "jogo":
-                midia = criar_Jogo(titulo).factory_midia(titulo)
-            case "livro":
-                midia = criar_livro(titulo).factory_midia(titulo)
-            case "mangá" | "manga":
-                midia = criar_Manga(titulo).factory_midia(titulo)
-            case "filme":
-                midia = criar_filme(titulo).factory_midia(titulo)
-            case "seriado" | "seriados":
-                midia = criar_seriados(titulo).factory_midia(titulo)
-            case _:
-                raise Exception("Não foi possivel criar Midia")
-        return midia
-
-
-
-obj = nova_midia("teste", "anime")
-print(obj.get_nome())
-
-
-
-
 #-------------------------------------------------------------- 
 #                   Anime
 # -------------------------------------------------------------
@@ -135,7 +103,4 @@ class Seriado(Midia):
         if not isinstance(outro, Seriado):
                 return False
         return (self.titulo == outro.titulo)
-    
 
-
-#obg  = factory_Midia.nova_midia("teste")

@@ -1,5 +1,4 @@
 from abc import ABC, abstractmethod
-#from model.midia import Midia
 
 # o estado contexto faz a troca dos estados e o repasse do que deve ser feito para o estado correto
 class Estado_Contexto:
@@ -12,6 +11,7 @@ class Estado_Contexto:
         self._estado_atual = Nao_iniciado()
 
     def set_estado(self, novo_estado):
+        # usado para definir novo estado
         self._estado_atual = novo_estado
 
     def iniciar(self):
@@ -82,6 +82,7 @@ class Em_progresso(Estado_midia):
         midia.set_estado(Pausa())
 
     def concluir(self, midia):
+        print("Mídia concluida")
         midia.set_estado(Concluido())
 
     def abandonar(self, midia):
@@ -98,6 +99,7 @@ class Concluido(Estado_midia):
         midia.set_estado(Pausa())
 
     def concluir(self, midia):
+        print("Mídia concluida")
         midia.set_estado(Concluido())
 
     def abandonar(self, midia):
