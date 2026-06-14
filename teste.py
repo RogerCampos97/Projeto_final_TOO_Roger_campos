@@ -11,3 +11,8 @@ if __name__ == "__main__":
     filme_teste.estado.concluir()
 
     print(filme_teste.__repr__())
+
+    from view.menu import main
+
+    # if __name__ == "__main__":
+    main()
