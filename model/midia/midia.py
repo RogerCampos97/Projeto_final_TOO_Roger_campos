@@ -43,7 +43,7 @@ class Midia(ABC):
             raise ValueError("O nome não pode ser vazio!")
         self.titulo = add_comment
 
-    
+
     @abstractmethod
     def __eq__(self, outro:object) -> bool:
         pass
@@ -53,6 +53,9 @@ class Midia(ABC):
 
     def __str__(self):
         return (f"tipo: {self.__class__.__name__}, nome: {self.titulo}")
+    
+    def __repr__(self) -> str:
+        return self.__str__()
     
 
 
