@@ -1,14 +1,18 @@
-from abc import ABC, abstractmethod
 from model.midia.midia import Midia
 
-class Biblioteca:
+class Lista_Conteudo:
+    '''
+    lista de mídias que podem ser criadas pelo usuario
+
+        Args: nome da lista
+    '''
     def __init__(self, nome: str):
         self.nome = nome
-        self._midia = []
+        self._midia: list[Midia] = []
     
     @property
     def nome(self):
-        return self._nome
+        return self.nome
     
     @nome.setter
     def nome(self, add_nome):
@@ -17,9 +21,14 @@ class Biblioteca:
         novo_nome = " ".join(add_nome.split())
         if not add_nome:
             raise ValueError("O nome não pode ser vazio!")
-        self._nome = add_nome
+        self.nome = add_nome
 
     def add_midia(self, midia):
+        '''
+        fução para adicionar a midia na lista
+
+            Args: objeto do tipo mídia
+        '''
         if not isinstance(midia, Midia):
             raise TypeError("Falha ao adicionar Item, objeto de tipo inválido")
         if midia in self._midia:
@@ -28,15 +37,25 @@ class Biblioteca:
         return(f"Midia adicionada a coleção {self.nome}")
 
     def remove_midia(self, midia):
+        '''
+        fução para remover a midia na lista
+
+            Args: objeto do tipo mídia
+        '''
         if midia in self._midia:
             self._midia.remove(midia)
-            return(f"midia removida da coleção!")
+            return(f"midia removida da coleção {self.nome}!")
         else:
-            return(f"midia não encontrada")
+            return(f"midia não encontrada na coleção {self.nome}")
         
     def listar_conteudo(self):
+        '''fução para mostrar as midias da lista_conteudo'''
         msg = f"\nMídias na coleção {self.nome}:\n"
         for i, md in enumerate(self._midia, 1):
             msg += f"{i} - {md}\n"
         return msg
     
+    def __eq__(self, outro:object):
+        if not isinstance(outro, Lista_Conteudo):
+                return False
+        return (self.nome == outro.nome)

@@ -32,7 +32,7 @@ class Midia(ABC):
     def titulo(self, add_titulo):
         if not isinstance(add_titulo, str):
             raise TypeError("O nome deve ser texto!")
-        novo_nome = " ".join(add_titulo.split())
+        add_titulo = " ".join(add_titulo.split())
         if not add_titulo:
             raise ValueError("O nome não pode ser vazio!")
         self._titulo = add_titulo
@@ -41,7 +41,7 @@ class Midia(ABC):
     def comentario(self, add_comment):
         if not isinstance(add_comment, str):
             raise TypeError("O nome deve ser texto!")
-        novo_nome = " ".join(add_comment.split())
+        add_comment = " ".join(add_comment.split())
         if not add_comment:
             raise ValueError("O nome não pode ser vazio!")
         self.titulo = add_comment
