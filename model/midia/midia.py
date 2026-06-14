@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 from datetime import datetime, timedelta
 from model.midia.Estado_midia import Estado_Contexto
+from info_datas import Info_data
 
 class Midia(ABC):
     '''
@@ -9,10 +10,8 @@ class Midia(ABC):
     def __init__(self, titulo: str):
         self.titulo = titulo
         self._autor: str | None = None
-        self.estado_atual = Estado_Contexto()
-        self._data_inclusao= datetime.now()
-        self._data_atualizado: datetime
-        self.data_concluido: datetime | None = None
+        self._estado_atual = Estado_Contexto()
+        self._datas = Info_data()
         #self.generos: list[Genero] = []
         self._comentario: str | None = None
     
@@ -22,12 +21,6 @@ class Midia(ABC):
     @property
     def comentario(self):
         return self._comentario
-    @property
-    def data_inclusao(self):
-        return self._data_inclusao
-    @property
-    def data_atualizado(self):
-        return self._data_atualizado
     @property
     def autor(self):
         return self._autor
@@ -49,13 +42,8 @@ class Midia(ABC):
         if not add_comment:
             raise ValueError("O nome não pode ser vazio!")
         self.titulo = add_comment
-    
-    @data_atualizado.setter
-    def data_atualizado(self, add_data):
-        if not isinstance(add_data, datetime):
-            raise TypeError("Deve ser data!")
-        self.data_atualizado = add_data
 
+    
     @abstractmethod
     def __eq__(self, outro:object) -> bool:
         pass

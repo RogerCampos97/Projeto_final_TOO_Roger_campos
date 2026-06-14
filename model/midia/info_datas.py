@@ -7,5 +7,7 @@ class Info_data:
     data_inclusao: datetime = field(default=datetime.now())
     data_atualizado: datetime = field(default=datetime.now())
         
-teste = Info_data()
-print(teste)
+    def atualizar_data(self):
+        self.data_atualizado = datetime.now()
+    def concluir(self):
+        self.data_concluido = datetime.now()
