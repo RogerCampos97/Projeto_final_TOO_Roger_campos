@@ -22,7 +22,7 @@ class Gerenciador_biblioteca(metaclass=SingletonMeta):
         '''
         criar novo objeto tipo lista_conteudo e faz
         o append na lista do gerenciador
-        
+
             Args: 
                 nome = nome da lista
         '''
@@ -51,9 +51,6 @@ class Gerenciador_biblioteca(metaclass=SingletonMeta):
             return True
         except ValueError:
             return False  # não encontrado
-
-        """  if biblioteca in self._bibliotecas:
-            self._bibliotecas.remove(biblioteca) """
 
     def buscar_midia_global(self, nome: str):
         '''

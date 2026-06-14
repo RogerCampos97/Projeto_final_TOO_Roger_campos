@@ -8,12 +8,13 @@ class Midia(ABC):
     '''
     def __init__(self, titulo: str):
         self.titulo = titulo
+        self._autor: str | None = None
         self.estado_atual = Estado_Contexto()
-        self._data_inclusao: datetime
+        self._data_inclusao= datetime.now()
         self._data_atualizado: datetime
+        self.data_concluido: datetime | None = None
         #self.generos: list[Genero] = []
-        #self.plataforma_acesso = list[Plataformas]
-        self._comentario = None
+        self._comentario: str | None = None
     
     @property
     def titulo(self):
@@ -27,6 +28,9 @@ class Midia(ABC):
     @property
     def data_atualizado(self):
         return self._data_atualizado
+    @property
+    def autor(self):
+        return self._autor
     
     @titulo.setter
     def titulo(self, add_titulo):
@@ -45,12 +49,6 @@ class Midia(ABC):
         if not add_comment:
             raise ValueError("O nome não pode ser vazio!")
         self.titulo = add_comment
-    
-    @data_inclusao.setter
-    def data_inclusao(self, add_data):
-        if not isinstance(add_data, datetime):
-            raise TypeError("Deve ser data!")
-        self.data_inclusao = add_data
     
     @data_atualizado.setter
     def data_atualizado(self, add_data):
