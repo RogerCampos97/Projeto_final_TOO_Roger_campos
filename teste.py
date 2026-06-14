@@ -1,6 +1,5 @@
 from model.midia.factory_midia import factory_Midia
 
-#def cria_midia(titulo):
 
 
 if __name__ == "__main__":
@@ -8,5 +7,7 @@ if __name__ == "__main__":
 
     print(f"{filme_teste}")
 
-    filme_teste.estado_atual.iniciar()
-    filme_teste.estado_atual.concluir()
+    filme_teste.estado.iniciar()
+    filme_teste.estado.concluir()
+
+    print(filme_teste.__repr__())

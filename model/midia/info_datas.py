@@ -26,12 +26,12 @@ class Info_data:
     
     def calcular_inervalo_inclusao(self) -> str:
         return Info_data.calcular_intervalo_datas(datetime.now(), self.data_inclusao)
-        
     
     def calcular_tempo_desde_conclusao(self):
         if self.data_concluido:
             return Info_data.calcular_intervalo_datas(self.data_concluido, self.data_inclusao)
         else:
             return "sem data de conclusão"
+        
     def calcular_tempo_desde_ultimo_update(self):
         return Info_data.calcular_intervalo_datas(datetime.now(), self.data_atualizado)

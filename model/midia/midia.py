@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
-from datetime import datetime, timedelta
-from model.midia.Estado_midia import Estado_Contexto
-from info_datas import Info_data
+from .estado_midia import Estado_Contexto
+from .info_datas import Info_data
 
 class Midia(ABC):
     '''
@@ -10,7 +9,7 @@ class Midia(ABC):
     def __init__(self, titulo: str):
         self.titulo = titulo
         self._autor: str | None = None
-        self._estado_atual = Estado_Contexto()
+        self.estado = Estado_Contexto()
         self._datas = Info_data()
         #self.generos: list[Genero] = []
         self._comentario: str | None = None
@@ -55,7 +54,8 @@ class Midia(ABC):
         return (f"tipo: {self.__class__.__name__}, nome: {self.titulo}")
     
     def __repr__(self) -> str:
-        return self.__str__()
+        msg = str(self.__dict__)
+        return msg
     
 
 
