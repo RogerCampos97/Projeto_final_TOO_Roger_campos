@@ -47,6 +47,9 @@ class Menu:
         self.items.append(item)
 
     def show(self):
+        '''
+        função para mostrar o menu criado
+        '''
         while True:
             print(f"\n== {self.titulo} ==")
             for i, item in enumerate(self.items, start=1):
@@ -104,6 +107,3 @@ def main():
     main_menu.add_item(MenuItem("Contato", acao=lambda: print("Contato: contato@exemplo.com")))
 
     main_menu.show()
-
-""" if __name__ == "__main__":
-    main() """
