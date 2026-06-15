@@ -1,4 +1,4 @@
-from .biblioteca import Lista_Conteudo
+from model.biblioteca.biblioteca import Lista_Conteudo
 from model.midia.midia import Midia
 
 class SingletonMeta(type): 
@@ -65,3 +65,10 @@ class Gerenciador_biblioteca(metaclass=SingletonMeta):
                 return m
         return None
     
+    def listar_bibliotecas(self):
+        '''fução para mostrar as listas de midia'''
+        msg = "\nColeçóes:\n"
+        for i, mdlista in enumerate(self._bibliotecas, 1):
+            msg += f"{i} - {mdlista.nome}\n"
+        return msg
+
