@@ -18,7 +18,7 @@ class Gerenciador_biblioteca(metaclass=SingletonMeta):
         self._lista_midias: list[Midia] = []
         self._bibliotecas: list[Lista_Conteudo] = []
 
-    def criar_biblioteca(self, nome: str):
+    def criar_categoria(self, nome: str):
         '''
         criar novo objeto tipo lista_conteudo e faz
         o append na lista do gerenciador
@@ -26,18 +26,15 @@ class Gerenciador_biblioteca(metaclass=SingletonMeta):
             Args: 
                 nome = nome da lista
         '''
-        if not isinstance(nome, str):
-            raise TypeError("O nome deve ser texto!")
-        nome = " ".join(nome.split())
-        if not nome:
-            raise ValueError("O nome não pode ser vazio!")
         entrada = Lista_Conteudo(nome)
+        print("voltou")
         if entrada not in self._bibliotecas:
             self._bibliotecas.append(entrada)
+            return ("Nova categoria da biblioteca criada!")
         else:
-            raise ValueError("Já existe Categoria com o mesmo nome") 
+            raise ValueError(f"Já existe Categoria com o nome [{entrada}], tente outro nome!") 
 
-    def excluir_biblioteca(self, biblioteca: Lista_Conteudo) -> bool:
+    def excluir_categoria(self, biblioteca: Lista_Conteudo) -> bool:
         '''
         excluir uma lista da tipo lista_conteudo da lista bibliotecas 
 
@@ -65,7 +62,7 @@ class Gerenciador_biblioteca(metaclass=SingletonMeta):
                 return m
         return None
     
-    def listar_bibliotecas(self):
+    def listar_categorias(self):
         '''fução para mostrar as listas de midia'''
         msg = "\nColeçóes:\n"
         for i, mdlista in enumerate(self._bibliotecas, 1):

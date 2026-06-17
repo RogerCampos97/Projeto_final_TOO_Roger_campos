@@ -7,13 +7,13 @@ from controller.interface_bibliotecas import *
 from view.menu import Menu, MenuItem
 
 def main():
-    biblioteca = listas()
+    biblioteca = categorias()
 
     main_menu = Menu("Menu Principal")
 
     submenu_bibliotecas = Menu("Bibliotecas")
-    submenu_bibliotecas.add_item(MenuItem("Listar Bibliotecas", acao=biblioteca.listar))
-    #submenu_bibliotecas.add_item(MenuItem("Criar nova biblioteca", acao=pass))
+    submenu_bibliotecas.add_item(MenuItem("Listar Categorias", acao=biblioteca.listar))
+    submenu_bibliotecas.add_item(MenuItem("Criar nova categoria", acao=biblioteca.criar_nova))
 
 
 

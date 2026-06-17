@@ -16,12 +16,15 @@ class Lista_Conteudo:
     
     @nome.setter
     def nome(self, add_nome):
+        print("chegou no setter")
         if not isinstance(add_nome, str):
             raise TypeError("O nome deve ser texto!")
-        novo_nome = " ".join(add_nome.split())
+        add_nome = " ".join(add_nome.split())
         if not add_nome:
             raise ValueError("O nome não pode ser vazio!")
-        self.nome = add_nome
+        self._nome = add_nome 
+        # usar sempre _nome antes do setter pq se não causa loop infinito, 
+        # setter chama ele mesmo e não atribui valor
 
     def add_midia(self, midia):
         '''
