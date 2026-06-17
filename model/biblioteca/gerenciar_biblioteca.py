@@ -64,8 +64,9 @@ class Gerenciador_biblioteca(metaclass=SingletonMeta):
     
     def listar_categorias(self):
         '''fução para mostrar as listas de midia'''
+        print("chegou aqui")
         msg = "\nColeçóes:\n"
         for i, mdlista in enumerate(self._bibliotecas, 1):
-            msg += f"{i} - {mdlista.nome}\n"
+            msg += f"{i} - {mdlista.get_info()}\n"
         return msg
 

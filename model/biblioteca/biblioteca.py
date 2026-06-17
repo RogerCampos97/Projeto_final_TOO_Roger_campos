@@ -12,7 +12,7 @@ class Lista_Conteudo:
     
     @property
     def nome(self):
-        return self.nome
+        return self._nome
     
     @nome.setter
     def nome(self, add_nome):
@@ -37,7 +37,7 @@ class Lista_Conteudo:
         if midia in self._midia:
             return(f"Falha ao adicionar Item, item Já no inventário")
         self._midia.append(midia)
-        return(f"Midia adicionada a coleção {self.nome}")
+        return(f"Midia adicionada a coleção {self._nome}")
 
     def remove_midia(self, midia):
         '''
@@ -47,13 +47,13 @@ class Lista_Conteudo:
         '''
         if midia in self._midia:
             self._midia.remove(midia)
-            return(f"midia removida da coleção {self.nome}!")
+            return(f"midia removida da coleção {self._nome}!")
         else:
-            return(f"midia não encontrada na coleção {self.nome}")
+            return(f"midia não encontrada na coleção {self._nome}")
         
     def listar_conteudo(self):
         '''fução para mostrar as midias da lista_conteudo'''
-        msg = f"\nMídias na coleção {self.nome}:\n"
+        msg = f"\nMídias na coleção {self._nome}:\n"
         for i, md in enumerate(self._midia, 1):
             msg += f"{i} - {md}\n"
         return msg
@@ -61,4 +61,10 @@ class Lista_Conteudo:
     def __eq__(self, outro:object):
         if not isinstance(outro, Lista_Conteudo):
                 return False
-        return (self.nome == outro.nome)
+        return (self._nome == outro._nome)
+    
+    def get_info(self):
+        return (f"{self._nome} - [{len(self._midia)}]")
+    
+    def __str__(self) -> str:
+        return (f"{self._nome}")
