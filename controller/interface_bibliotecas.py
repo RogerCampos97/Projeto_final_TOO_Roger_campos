@@ -1,5 +1,6 @@
 import os
 import sys
+from abc import ABC, abstractmethod
 # Adiciona a pasta raiz do projeto
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -11,11 +12,12 @@ class interface:
         self.gerente = Gerenciador_biblioteca()
 
 
+
 class listas(interface):
 
     def listar(self):
-        print("sucesso")
-        pass
+        print("Todas as categorias:\n")
+        print(self.gerente.listar_bibliotecas())
     
     def criar_nova(self):
         pass
