@@ -1,5 +1,11 @@
 from model.biblioteca.gerenciar_biblioteca import Gerenciador_biblioteca
 
+class interface_bibliotecas:
+    def __init__(self) -> None:
+        self.gerente = Gerenciador_biblioteca()
 
-def listar_biblioteca(gerente: Gerenciador_biblioteca):
-    print(gerente.listar_bibliotecas())
+
+    def listar(self):
+        print("sucesso")
+        pass
+        #print(self.listar())
