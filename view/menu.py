@@ -30,8 +30,9 @@ class Menu:
     '''
     classe do menu principal
     '''
-    def __init__(self, titulo: str, items: Optional[List[MenuItem]] = None, parent: 'Menu' = None):
+    def __init__(self, titulo: str, descricao: Optional[str] = None, items: Optional[List[MenuItem]] = None, parent: 'Menu' = None):
         self.titulo = titulo
+        self.descricao = descricao
         self.items = items or []
         self.parent = parent
 
@@ -52,6 +53,8 @@ class Menu:
         '''
         while True:
             print(f"\n== {self.titulo} ==")
+            if self.descricao is not None and isinstance(self.descricao, str):
+                print(f"{self.descricao}")
             for i, item in enumerate(self.items, start=1):
                 suffix = " >" if item.is_submenu() else ""
                 print(f"{i}. {item.titulo}{suffix}")
@@ -87,6 +90,7 @@ class Menu:
                 print("Escolha inválida. Tente novamente.")
 
 # Exemplo de uso
+""" 
 def say_hello():
     print("Olá! Você escolheu dizer olá.")
 
@@ -106,4 +110,5 @@ def main():
     main_menu.add_item(MenuItem("Sobre", acao=show_info))
     main_menu.add_item(MenuItem("Contato", acao=lambda: print("Contato: contato@exemplo.com")))
 
-    main_menu.show()
+    main_menu.show() 
+"""

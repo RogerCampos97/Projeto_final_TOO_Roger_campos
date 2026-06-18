@@ -11,16 +11,17 @@ def main():
 
     main_menu = Menu("Menu Principal")
 
-    submenu_bibliotecas = Menu("Bibliotecas")
+    submenu_bibliotecas = Menu("Categorias")
     submenu_bibliotecas.add_item(MenuItem("Listar Categorias", acao=biblioteca.listar))
     submenu_bibliotecas.add_item(MenuItem("Criar nova categoria", acao=biblioteca.criar_nova))
+    
 
 
 
    
-    main_menu.add_item(MenuItem("Bibliotecas", submenu=submenu_bibliotecas))
-    #main_menu.add_item(MenuItem("Sobre", acao=show_info))
-    main_menu.add_item(MenuItem("Contato", acao=lambda: print("Contato: contato@exemplo.com")))
+    main_menu.add_item(MenuItem("Categorias", submenu=submenu_bibliotecas))
+    main_menu.add_item(MenuItem("Contato", acao=lambda: 
+                                print("Contato: contato@exemplo.com")))
 
     main_menu.show()
 
