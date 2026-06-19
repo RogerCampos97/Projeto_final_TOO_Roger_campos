@@ -9,7 +9,7 @@ from view.menu import Menu, MenuItem
 def main():
     biblioteca = categorias()
 
-    main_menu = Menu("Menu Principal")
+    main_menu = Menu("Menu Principal", descricao="alo povo de sergipe")
 
     submenu_bibliotecas = Menu("Categorias")
     submenu_bibliotecas.add_item(MenuItem("Listar Categorias", acao=biblioteca.listar))

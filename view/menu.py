@@ -15,7 +15,7 @@ class MenuItem:
             acao: o que é feito quando o item correspondente é selecionado, 
             submenu: submenu desse menu (padrao none, pode ser adicionado depois)
     '''
-    def __init__(self, titulo: str, acao: Optional[Callable] = None, submenu: 'Menu' = None):
+    def __init__(self, titulo: str, acao: Optional[Callable] = None, submenu: 'Menu' = None):# type: ignore
         self.titulo = titulo
         self.acao = acao
         self.submenu = submenu
@@ -30,7 +30,7 @@ class Menu:
     '''
     classe do menu principal
     '''
-    def __init__(self, titulo: str, descricao: Optional[str] = None, items: Optional[List[MenuItem]] = None, parent: 'Menu' = None):
+    def __init__(self, titulo: str, descricao: Optional[str] = None, items: Optional[List[MenuItem]] = None, parent: 'Menu' = None):# type: ignore
         self.titulo = titulo
         self.descricao = descricao
         self.items = items or []
@@ -54,7 +54,7 @@ class Menu:
         while True:
             print(f"\n== {self.titulo} ==")
             if self.descricao is not None and isinstance(self.descricao, str):
-                print(f"{self.descricao}")
+                print(f"# {self.descricao}")
             for i, item in enumerate(self.items, start=1):
                 suffix = " >" if item.is_submenu() else ""
                 print(f"{i}. {item.titulo}{suffix}")
