@@ -18,8 +18,7 @@ def main():
     #main_menu = Menu("Menu Principal", acao_desc="eu fiz funfa")
     main_menu = Menu("Menu Principal")
 
-    submenu_listas = Menu("Categorias")
-    submenu_listas.add_item(MenuItem("Listar Categorias", acao=view_listar_listas_conteudo, args=[categorias]))
+    submenu_listas = Menu("Categorias", acao_desc=view_listar_listas_conteudo, args=[categorias])
     submenu_listas.add_item(MenuItem("Criar nova categoria", acao=view_criar_lista_conteudo, args=[categorias]))
 
     submenu_midias = Menu("Midias")
