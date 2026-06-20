@@ -32,9 +32,12 @@ class Menu:
     '''
     classe do menu principal
     '''
-    def __init__(self, titulo: str, acao_desc: Optional[Callable|str] = None, items: Optional[List[MenuItem]] = None, parent: 'Menu' = None):
+    def __init__(self, titulo: str, acao_desc: Optional[Callable|str] = None, args=(), kwargs=None, 
+                 items: Optional[List[MenuItem]] = None, parent: 'Menu' = None):# type: ignore
         self.titulo = titulo
         self.acao_desc = acao_desc
+        self.args = tuple(args)
+        self.kwargs = dict(kwargs or {})
         self.items = items or []
         self.parent = parent
 
@@ -55,14 +58,16 @@ class Menu:
         '''
         while True:
             print(f"\n== {self.titulo} ==")
+            
             try:
                 if self.acao_desc is not None:
                     if isinstance(self.acao_desc, str):
                         print(f"# {self.acao_desc}")
                     elif isinstance(self.acao_desc, Callable):
-                        self.acao_desc()
+                        self.acao_desc(*self.args, **self.kwargs)
             except Exception as e:
                 print(f"Erro na ação: {e}")
+
             for i, item in enumerate(self.items, start=1):
                 suffix = " >" if item.is_submenu() else ""
                 print(f"{i}. {item.titulo}{suffix}")

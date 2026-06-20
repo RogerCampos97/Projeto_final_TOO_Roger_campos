@@ -6,14 +6,17 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from controllers.controller_categorias import controller_categorias
 from views.view_categorias import *
 from views.menu import Menu, MenuItem
-def teste_chamar():
-    print("sucesso")
+
+def teste_chamar(teste):
+    print(teste)
 
 def main():
     categorias = controller_categorias()
 
-    #main_menu = Menu("Menu Principal", acao_desc=teste_chamar)
-    main_menu = Menu("Menu Principal", acao_desc="eu fiz funfa")
+    
+    #main_menu = Menu("Menu Principal", acao_desc=teste_chamar, args=["teste2"])
+    #main_menu = Menu("Menu Principal", acao_desc="eu fiz funfa")
+    main_menu = Menu("Menu Principal")
 
     submenu_listas = Menu("Categorias")
     submenu_listas.add_item(MenuItem("Listar Categorias", acao=view_listar_listas_conteudo, args=[categorias]))
