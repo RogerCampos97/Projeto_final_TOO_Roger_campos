@@ -51,15 +51,28 @@ class Midia(ABC):
         pass
 
     def __str__(self):
-        return (f"tipo: {self.__class__.__name__}, nome: {self.titulo}")
+        return (f"tipo: {self.__class__.__name__}, nome: {self._titulo}")
     
     def __repr__(self) -> str:
         msg = str(self.__dict__)
         return msg
     
-    
+    '''
+    @classmethod -> metodo da classe, recebe ela por padrao
+    '''
     @classmethod
     def obter_tipo_midia(cls) -> list:
+        '''
+        
+        metodo para pegar as classes filhas de midia, precisa do __init__.py 
+        com o nome das classes se não retorna lista vazia
+
+            Returns:
+                List:
+                    Lista com o nome de todos os tipos de Midia(obtido pelo nome da classe)
+                    se precisar adicionar mais tipos criar a classe filha, adicionar no factory
+                    e no init e a lista atualiza automatico.
+        '''
         return [sub.__name__ for sub in cls.__subclasses__()]
 
 

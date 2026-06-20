@@ -41,7 +41,7 @@ class Lista_Conteudo:
         if not isinstance(midia, Midia):
             raise TypeError("Falha ao adicionar Item, objeto de tipo inválido")
         if midia in self._midia:
-            return(f"Falha ao adicionar Item, item Já no inventário")
+            raise ValueError(f"Falha ao adicionar Item, item Já no inventário")
         self._midia.append(midia)
         return(f"Midia adicionada a coleção {self._nome}")
 

@@ -4,9 +4,9 @@ from .midia import Midia
 # -------------------------------------------------------------
 class Anime(Midia):
     def __init__(self, titulo: str): 
-        # caso não tiver nenhum atributo a mais ou algum codigo 
-        # a ser feito na inicialização posso omitir o init, 
-        # é usado o da classe abstrata
+        """ caso não tiver nenhum atributo a mais ou algum codigo
+        a ser feito na inicialização posso omitir o init,
+        é usado o da classe abstrata """
         super().__init__(titulo)
         self._estudio: str | None = None
     @property
@@ -93,13 +93,13 @@ class Manga(Midia):
 #-------------------------------------------------------------- 
 #                   Filme
 # ------------------------------------------------------------- 
-class filme(Midia):
+class Filme(Midia):
     def __init__(self, titulo: str):
         super().__init__(titulo)
     def get_nome(self):
         return "Filme"
     def __eq__(self, outro:object):
-        if not isinstance(outro, filme):
+        if not isinstance(outro, Filme):
                 return False
         return (self.titulo == outro.titulo)
 #-------------------------------------------------------------- 

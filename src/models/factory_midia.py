@@ -38,17 +38,17 @@ class factory_Midia(ABC):
         '''
         tipo = tipo.strip().lower()
         match tipo:
-            case "anime" | "animes":
+            case "anime":
                 midia = criar_Anime(titulo).factory_midia(titulo)
-            case "jogo" | "jogos":
+            case "jogo":
                 midia = criar_Jogo(titulo).factory_midia(titulo)
-            case "livro" | "livros":
+            case "livro":
                 midia = criar_livro(titulo).factory_midia(titulo)
-            case "mangá" | "manga" | "mangas" | "mangás":
+            case "manga":
                 midia = criar_Manga(titulo).factory_midia(titulo)
-            case "filme" | "filmes":
+            case "filme":
                 midia = criar_filme(titulo).factory_midia(titulo)
-            case "seriado" | "seriados"| "serie" | "series":
+            case "seriado":
                 midia = criar_seriados(titulo).factory_midia(titulo)
             case _:
                 raise Exception("Não foi possivel criar Midia")
@@ -81,7 +81,7 @@ class criar_Manga(factory_Midia):
 class criar_filme(factory_Midia):
     '''classe concreta usada pelo factory para criar o objeto filme'''
     def factory_midia(self, titulo) -> Midia:
-        return filme(titulo)
+        return Filme(titulo)
 #seriado
 class criar_seriados(factory_Midia):
     '''classe concreta usada pelo factory para criar o objeto seriado'''

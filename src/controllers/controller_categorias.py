@@ -30,7 +30,7 @@ class controller_categorias(metaclass=SingletonMeta):
         o append na lista do gerenciador
 
             Args: 
-                nome = nome da lista
+                nome = nome da lista str
         '''
         entrada = Lista_Conteudo(nome)
         if entrada not in self._bibliotecas:
