@@ -4,8 +4,8 @@ from abc import ABC, abstractmethod
 # Adiciona a pasta raiz do projeto
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from model.biblioteca.gerenciar_biblioteca import Gerenciador_biblioteca
-from model.midia.factory_midia import factory_Midia
+
+from src.model.midia.factory_midia import factory_Midia
 from view.menu import Menu, MenuItem
 
 class interface(ABC):

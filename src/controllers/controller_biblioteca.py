@@ -1,5 +1,10 @@
-from model.biblioteca.biblioteca import Lista_Conteudo
-from model.midia.midia import Midia
+import os
+import sys
+# Adiciona a pasta raiz do projeto
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from ..models.biblioteca import Lista_Conteudo
+from ..models.midia import Midia
 
 class SingletonMeta(type): 
     '''
@@ -13,7 +18,7 @@ class SingletonMeta(type):
             cls._instances[cls] = super().__call__(*args, **kwargs)
         return cls._instances[cls]
 
-class Gerenciador_biblioteca(metaclass=SingletonMeta):
+class controller_listas(metaclass=SingletonMeta):
     def __init__(self) -> None:
         self._lista_midias: list[Midia] = []
         self._bibliotecas: list[Lista_Conteudo] = []

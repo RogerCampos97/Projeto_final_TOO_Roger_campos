@@ -1,4 +1,5 @@
-from model.midia.midia import Midia
+from .midia import Midia
+from typing import List
 
 class Lista_Conteudo:
     '''
@@ -8,7 +9,7 @@ class Lista_Conteudo:
     '''
     def __init__(self, nome: str):
         self.nome = nome
-        self._midia: list[Midia] = []
+        self._midia: List[Midia] = []
     
     @property
     def nome(self):
