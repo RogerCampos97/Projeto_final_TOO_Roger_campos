@@ -69,10 +69,10 @@ class controller_categorias(metaclass=SingletonMeta):
     
     def listar_categorias(self):
         '''fução para mostrar as listas de midia'''
-        print("chegou aqui")
-        msg = "\nColeçóes:\n"
+        msg = f"{'='*30}\nColeçóes:\n"
         for i, mdlista in enumerate(self._bibliotecas, 1):
             msg += f"{i} - {mdlista.get_info()}\n"
+        msg += f"{'='*30}"
         return msg
 
     def retornar_categoria(self, index: int) ->Lista_Conteudo:

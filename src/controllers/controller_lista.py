@@ -59,9 +59,10 @@ class Lista_Conteudo:
         
     def listar_conteudo(self):
         '''fução para mostrar as midias da lista_conteudo'''
-        msg = f"\nMídias na coleção {self._nome}:\n"
+        msg = f"{'='*30}\nMídias na coleção {self._nome}:\n"
         for i, md in enumerate(self._midia, 1):
             msg += f"{i} - {md}\n"
+        msg += f"{'='*30}"
         return msg
     
     def mover_midia(self):

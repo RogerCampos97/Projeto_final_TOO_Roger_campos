@@ -57,7 +57,10 @@ class Midia(ABC):
         msg = str(self.__dict__)
         return msg
     
-
+    
+    @classmethod
+    def obter_tipo_midia(cls) -> list:
+        return [sub.__name__ for sub in cls.__subclasses__()]
 
 
 

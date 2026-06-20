@@ -21,12 +21,12 @@ def main():
 
     # submenu listas
     submenu_listas = Menu("Categorias", acao_desc=view_listar_listas_conteudo, args=[categorias])
-
-    submenu_listas.add_item(MenuItem("Detalhar lista", acao=view_listar_conteudos_lista))
+    submenu_listas.add_item(MenuItem("Detalhar lista", acao=view_listar_conteudos_lista, args=[categorias]))
     submenu_listas.add_item(MenuItem("Criar nova categoria", acao=view_criar_lista_conteudo, args=[categorias]))
 
     # submenu midias
     submenu_midias = Menu("Midias")
+    submenu_midias.add_item(MenuItem("Adicionar mídia", acao=criar_nova_midia, args=[categorias]))
     
 
     # itens menu principal
