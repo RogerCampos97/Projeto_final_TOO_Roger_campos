@@ -1,5 +1,6 @@
 import os
 import sys
+from typing import List
 # Adiciona a pasta raiz do projeto
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
@@ -20,8 +21,8 @@ class SingletonMeta(type):
 
 class controller_listas(metaclass=SingletonMeta):
     def __init__(self) -> None:
-        self._lista_midias: list[Midia] = []
-        self._bibliotecas: list[Lista_Conteudo] = []
+        self._lista_midias: List [Midia] = []
+        self._bibliotecas: List [Lista_Conteudo] = []
 
     def criar_categoria(self, nome: str):
         '''
@@ -32,7 +33,6 @@ class controller_listas(metaclass=SingletonMeta):
                 nome = nome da lista
         '''
         entrada = Lista_Conteudo(nome)
-        print("voltou")
         if entrada not in self._bibliotecas:
             self._bibliotecas.append(entrada)
             return ("Nova categoria da biblioteca criada!")
