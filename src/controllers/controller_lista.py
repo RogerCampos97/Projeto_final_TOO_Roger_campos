@@ -1,5 +1,10 @@
-from ..models.midia import Midia
+import os
+import sys
 from typing import List
+# Adiciona a pasta raiz do projeto
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from models.midia import Midia
 
 class Lista_Conteudo:
     '''
@@ -64,9 +69,6 @@ class Lista_Conteudo:
 
     def selecionar_tipo(self):
         pass
-
-
-
 
     def __eq__(self, outro:object):
         if not isinstance(outro, Lista_Conteudo):
