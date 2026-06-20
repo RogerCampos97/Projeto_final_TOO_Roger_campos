@@ -4,7 +4,7 @@ from abc import ABC, abstractmethod
 # Adiciona a pasta raiz do projeto
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from src.controllers.controller_biblioteca import controller_listas
+from controllers.controller_listas_conteudo import controller_listas
 
 
 def test_instanciamento_controlller():

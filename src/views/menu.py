@@ -15,9 +15,11 @@ class MenuItem:
             acao: o que é feito quando o item correspondente é selecionado, 
             submenu: submenu desse menu (padrao none, pode ser adicionado depois)
     '''
-    def __init__(self, titulo: str, acao: Optional[Callable] = None, submenu: 'Menu' = None):# type: ignore
+    def __init__(self, titulo: str, acao: Optional[Callable] = None, args=(), kwargs=None, submenu: 'Menu' = None):# type: ignore
         self.titulo = titulo
         self.acao = acao
+        self.args = tuple(args)
+        self.kwargs = dict(kwargs or {})
         self.submenu = submenu
 
     def is_submenu(self) -> bool:
@@ -81,7 +83,7 @@ class Menu:
                     selected.submenu.show()
                 elif selected.acao:
                     try:
-                        selected.acao()
+                        selected.acao(*selected.args, **selected.kwargs)
                     except Exception as e:
                         print(f"Erro na ação: {e}")
                 else:

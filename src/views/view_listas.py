@@ -4,7 +4,7 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 #from src.views.menu import Menu, MenuItem
-from src.controllers.controller_biblioteca import controller_listas
+from controllers.controller_listas_conteudo import controller_listas
 
 def view_criar_lista_conteudo(controlador: controller_listas):
         try:
@@ -14,3 +14,6 @@ def view_criar_lista_conteudo(controlador: controller_listas):
             print(e)
         else:
             print("Categoria criada com sucesso!!!")
+
+def view_listar_listas_conteudo(controlador: controller_listas):
+     print(controlador.listar_categorias())
