@@ -4,7 +4,7 @@ from typing import List
 # Adiciona a pasta raiz do projeto
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from models.listas_conteudo import Lista_Conteudo
+from controllers.controller_lista import Lista_Conteudo
 from models.midia import Midia
 
 class SingletonMeta(type): 
@@ -19,10 +19,10 @@ class SingletonMeta(type):
             cls._instances[cls] = super().__call__(*args, **kwargs)
         return cls._instances[cls]
 
-class controller_listas(metaclass=SingletonMeta):
+class controller_categorias(metaclass=SingletonMeta):
     def __init__(self) -> None:
-        self._lista_midias: List [Midia] = []
-        self._bibliotecas: List [Lista_Conteudo] = []
+        self._lista_midias: List [Midia] = [] # lista com todas as midias
+        self._bibliotecas: List [Lista_Conteudo] = []# listas com listas de midia
 
     def criar_categoria(self, nome: str):
         '''

@@ -1,4 +1,4 @@
-from .midia import Midia
+from ..models.midia import Midia
 from typing import List
 
 class Lista_Conteudo:
@@ -9,7 +9,7 @@ class Lista_Conteudo:
     '''
     def __init__(self, nome: str):
         self.nome = nome
-        self._midia: List[Midia] = []
+        self._midia: List [Midia] = [] #listas de midia
     
     @property
     def nome(self):
@@ -59,6 +59,15 @@ class Lista_Conteudo:
             msg += f"{i} - {md}\n"
         return msg
     
+    def mover_midia(self):
+        pass
+
+    def selecionar_tipo(self):
+        pass
+
+
+
+
     def __eq__(self, outro:object):
         if not isinstance(outro, Lista_Conteudo):
                 return False
