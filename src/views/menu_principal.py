@@ -12,7 +12,7 @@ def teste_chamar(teste):
     print(teste)
 
 def main():
-    categorias = controller_categorias()
+    ct = controller_categorias()
 
     
     #main_menu = Menu("Menu Principal", acao_desc=teste_chamar, args=["teste2"])
@@ -20,13 +20,13 @@ def main():
     main_menu = Menu("Menu Principal")
 
     # submenu listas
-    submenu_listas = Menu("Categorias", acao_desc=listar_listas_conteudo, args=[categorias])
-    submenu_listas.add_item(MenuItem("Detalhar lista", acao=listar_conteudos_lista, args=[categorias]))
-    submenu_listas.add_item(MenuItem("Criar nova categoria", acao=criar_lista_conteudo, args=[categorias]))
+    submenu_listas = Menu("Categorias", acao_desc=listar_categorias, args=[ct])
+    submenu_listas.add_item(MenuItem("Detalhar lista", acao=listar_conteudos_categoria, args=[ct]))
+    submenu_listas.add_item(MenuItem("Criar nova categoria", acao=criar_lista_conteudo, args=[ct]))
 
     # submenu midias
     submenu_midias = Menu("Midias")
-    submenu_midias.add_item(MenuItem("Adicionar mídia", acao=criar_nova_midia, args=[categorias]))
+    submenu_midias.add_item(MenuItem("Adicionar mídia", acao=criar_nova_midia, args=[ct]))
     
 
     # itens menu principal

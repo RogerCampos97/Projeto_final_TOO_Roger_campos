@@ -7,13 +7,16 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from controllers import Lista_Conteudo
 from controllers import controller_categorias
 from models import Midia, factory_Midia
-from view_categorias import listar_listas_conteudo
+from view_categorias import *
 
-def listar_conteudos_lista(controlador: controller_categorias):
+def listar_conteudos_categoria(controlador: controller_categorias):
     indice = int(input("Digite o número da lista para ver os conteúdos: "))
     try:
         lista = controlador.retornar_categoria(indice)
-        print(lista.listar_conteudo())
+        if isinstance(lista, int):
+            print(controlador.listar_lista_global())
+        else:
+            print(lista.listar_conteudo())
     except Exception as e:
         print(f"Erro na ação: {e}")
 
@@ -29,12 +32,17 @@ def criar_nova_midia(controlador: controller_categorias):
         tipo = int(input(f"{msg}\nSelecione a desejada: "))
         tipo = tipos_midia[tipo-1]
         nova_midia = factory_Midia.nova_midia(titulo_nova_midia, tipo) # manda pro factory o class name str
-        sel_categoria = input(f"{listar_listas_conteudo(controlador)}\n"
-              f"\nSelecione uma das listas acima para inserir a Midia: ")
-        
-        
-
+        sel_categoria = int(input(f"{listar_categorias(controlador)}\n"
+              f"\nSelecione uma das listas acima para inserir a Midia: "))
+        if sel_categoria == 1:
+            print(controlador.add_midia_global(nova_midia))
+        else:
+            print(controlador.add_midia_global(nova_midia))
+            print(controlador.add_midia_categoria(nova_midia, sel_categoria))
+    
     except Exception as e:
         print(f"Erro na ação: {e}")
 
 
+if __name__ == "__main__":
+    criar_nova_midia(controlador= controller_categorias())

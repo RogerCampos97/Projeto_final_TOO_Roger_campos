@@ -69,20 +69,48 @@ class controller_categorias(metaclass=SingletonMeta):
     
     def listar_categorias(self):
         '''fução para mostrar as listas de midia'''
-        msg = f"{'='*30}\nColeçóes:\n"
-        for i, mdlista in enumerate(self._bibliotecas, 1):
+
+        msg = f"{'='*30}\nColeçóes:\n1 - Padrão[{len(self._lista_midias)}]\n"
+        for i, mdlista in enumerate(self._bibliotecas, 2):
             msg += f"{i} - {mdlista.get_info()}\n"
         msg += f"{'='*30}"
         return msg
 
-    def retornar_categoria(self, index: int) ->Lista_Conteudo:
+    def retornar_categoria(self, index: int) -> int | Lista_Conteudo:
         '''
         recebe um indice e retorna uma categoria
         '''
         selected = None
-        if 1 <= index <= len(self._bibliotecas):
-            selected = self._bibliotecas[index - 1]
+
+        if 2 <= index <= len(self._bibliotecas):
+            selected = self._bibliotecas[index - 2]
+        elif index == 1:
+            return 1
         if selected is not None:
             return selected
         else:
             raise IndexError("Indice inválido para categoria")
+    
+
+    def listar_lista_global(self):
+        '''fução para mostrar as midias da lista_global'''
+        msg = f"{'='*30}\nMídias na coleção Padrão:\n"
+        if len(self._lista_midias) == 0:
+            msg += "\nNenhuma midia encontrada\n"
+        else:
+            for i, md in enumerate(self._lista_midias, 1):
+                msg += f"{i} - {md}\n"
+        msg += f"{'='*30}"
+        return msg
+    
+    def add_midia_global(self, midia: Midia):
+        if not isinstance(midia, Midia):
+            raise TypeError("Falha ao adicionar Item, objeto de tipo inválido")
+        if midia in self._lista_midias:
+            raise ValueError(f"Falha ao adicionar Item, item Já na lista")
+        self._lista_midias.append(midia)
+        return(f"Midia adicionada a coleção Padrão")
+    
+    def add_midia_categoria(self, midia: Midia, index: int):
+        self._bibliotecas[index - 2].add_midia(midia)
+        return(f"Midia adicionada a coleção {self._bibliotecas[index - 2]}")

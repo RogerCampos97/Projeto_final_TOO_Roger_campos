@@ -15,7 +15,7 @@ def criar_lista_conteudo(controlador: controller_categorias):
         else:
             print("Categoria criada com sucesso!!!")
 
-def listar_listas_conteudo(controlador: controller_categorias):
+def listar_categorias(controlador: controller_categorias):
      print(controlador.listar_categorias())
 
 def view_midias_buscar_midia_global(controlador: controller_categorias, nome: str):

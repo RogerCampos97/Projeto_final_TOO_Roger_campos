@@ -51,11 +51,10 @@ class Midia(ABC):
         pass
 
     def __str__(self):
-        return (f"tipo: {self.__class__.__name__}, nome: {self._titulo}")
+        return (f"Nome: {self._titulo} [{self.__class__.__name__}]")
     
     def __repr__(self) -> str:
-        msg = str(self.__dict__)
-        return msg
+        return str(self.__dict__)
     
     '''
     @classmethod -> metodo da classe, recebe ela por padrao

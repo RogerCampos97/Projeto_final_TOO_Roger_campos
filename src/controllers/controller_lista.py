@@ -41,7 +41,7 @@ class Lista_Conteudo:
         if not isinstance(midia, Midia):
             raise TypeError("Falha ao adicionar Item, objeto de tipo inválido")
         if midia in self._midia:
-            raise ValueError(f"Falha ao adicionar Item, item Já no inventário")
+            raise ValueError(f"Falha ao adicionar Item, item Já na lista")
         self._midia.append(midia)
         return(f"Midia adicionada a coleção {self._nome}")
 
@@ -58,10 +58,13 @@ class Lista_Conteudo:
             return(f"midia não encontrada na coleção {self._nome}")
         
     def listar_conteudo(self):
-        '''fução para mostrar as midias da lista_conteudo'''
+        '''função para mostrar as midias da lista_conteudo'''
         msg = f"{'='*30}\nMídias na coleção {self._nome}:\n"
-        for i, md in enumerate(self._midia, 1):
-            msg += f"{i} - {md}\n"
+        if len(self._midia) == 0:
+            msg += "\nNenhuma midia encontrada\n"
+        else:
+            for i, md in enumerate(self._midia, 1):
+                msg += f"{i} - {md}\n"
         msg += f"{'='*30}"
         return msg
     
