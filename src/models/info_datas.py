@@ -1,11 +1,15 @@
 from dataclasses import dataclass, field
 from datetime import datetime
+from typing import Optional
 
+'''
+@dataclass -> classe de dados
+'''
 @dataclass
 class Info_data:
     data_inclusao: datetime = field(default=datetime.now())
     data_atualizado: datetime = field(default=datetime.now())
-    data_concluido: datetime | None = field(default= None)
+    data_concluido: Optional[datetime] = field(default= None)
 
     def atualizar_data(self):
         self.data_atualizado = datetime.now()
@@ -14,7 +18,7 @@ class Info_data:
         self.data_concluido = datetime.now()
     
     @staticmethod
-    def calcular_intervalo_datas(final: datetime, primeira: datetime):
+    def calcular_intervalo_entre_datas(final: datetime, primeira: datetime):
         intervalo = final - primeira
         total_segundos = int(intervalo.total_seconds())
         dias = total_segundos // 86400
@@ -25,13 +29,13 @@ class Info_data:
         return(f": {tempo_completo}")
     
     def calcular_inervalo_inclusao(self) -> str:
-        return Info_data.calcular_intervalo_datas(datetime.now(), self.data_inclusao)
+        return Info_data.calcular_intervalo_entre_datas(datetime.now(), self.data_inclusao)
     
     def calcular_tempo_desde_conclusao(self):
         if self.data_concluido:
-            return Info_data.calcular_intervalo_datas(self.data_concluido, self.data_inclusao)
+            return Info_data.calcular_intervalo_entre_datas(self.data_concluido, self.data_inclusao)
         else:
             return "sem data de conclusão"
         
     def calcular_tempo_desde_ultimo_update(self):
-        return Info_data.calcular_intervalo_datas(datetime.now(), self.data_atualizado)
+        return Info_data.calcular_intervalo_entre_datas(datetime.now(), self.data_atualizado)

@@ -3,7 +3,7 @@ import sys
 # Adiciona a pasta raiz do projeto
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from ..models.biblioteca import Lista_Conteudo
+from ..models.listas_conteudo import Lista_Conteudo
 from ..models.midia import Midia
 
 class SingletonMeta(type): 

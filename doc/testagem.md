@@ -1,13 +1,15 @@
-#criando enviroment:
+# instruções para testagem
+
+## criando enviroment:
 python3 -m venv venv
 
-#ativando enviroment:
-###Windows:
+### ativando enviroment:
+### Windows:
 .\venv\Scripts\activate.bat
-###mac/Linux:
+### mac/Linux:
 source venv/bin/activate
 
-#modulo de testes pytest:
+## modulo de testes pytest:
 pip install pytest
 
-depois pode usar a funcao de testes do vscode
+- depois pode usar a funcao de testes do vscode
