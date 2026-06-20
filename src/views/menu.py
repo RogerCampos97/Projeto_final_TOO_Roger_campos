@@ -12,8 +12,11 @@ class MenuItem:
 
         Args: 
             titulo: titulo do menu
-            acao: o que é feito quando o item correspondente é selecionado, 
-            submenu: submenu desse menu (padrao none, pode ser adicionado depois)
+            acao: o que é feito quando o item correspondente é selecionado, tipo callable(uma função), 
+                    passar os argumentos depois em args ou kwargs.
+            args: argumentos para a funcao enviada no acao
+            kwargs: kwargs para a função enviada no acao
+            submenu: submenu desse menu (padrao none)
     '''
     def __init__(self, titulo: str, acao: Optional[Callable] = None, args=(), kwargs=None, submenu: 'Menu' = None):# type: ignore
         self.titulo = titulo
@@ -31,6 +34,15 @@ class MenuItem:
 class Menu:
     '''
     classe do menu principal
+
+        Args:
+            titulo:
+            acao_desc: o que é feito quando o item correspondente é selecionado, tipo callable(uma função), 
+                    passar os argumentos depois em args ou kwargs, ou um str comum para ser exibido
+            args: argumentos para a funcao enviada no acao_desc
+            kwargs: kwargs para a função enviada no acao_desc
+            items: itens do menu, tipo MenuItem
+            parent: menu pai
     '''
     def __init__(self, titulo: str, acao_desc: Optional[Callable|str] = None, args=(), kwargs=None, 
                  items: Optional[List[MenuItem]] = None, parent: 'Menu' = None):# type: ignore
@@ -58,7 +70,7 @@ class Menu:
         '''
         while True:
             print(f"\n== {self.titulo} ==")
-            
+
             try:
                 if self.acao_desc is not None:
                     if isinstance(self.acao_desc, str):

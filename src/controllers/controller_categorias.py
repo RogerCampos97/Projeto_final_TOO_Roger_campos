@@ -75,3 +75,14 @@ class controller_categorias(metaclass=SingletonMeta):
             msg += f"{i} - {mdlista.get_info()}\n"
         return msg
 
+    def retornar_categoria(self, index: int) ->Lista_Conteudo:
+        '''
+        recebe um indice e retorna uma categoria
+        '''
+        selected = None
+        if 1 <= index <= len(self._bibliotecas):
+            selected = self._bibliotecas[index - 1]
+        if selected is not None:
+            return selected
+        else:
+            raise IndexError("Indice inválido para categoria")

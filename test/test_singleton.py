@@ -4,16 +4,11 @@ from abc import ABC, abstractmethod
 # Adiciona a pasta raiz do projeto
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from controllers.controller_categorias import controller_listas
+from src.controllers.controller_categorias import controller_categorias
 
 
-def test_instanciamento_controlller():
-    gerente = controller_listas()
-    gerentenro2 = controller_listas()
+def test_instanciamento_controlller_categorias_mais_de_uma_vez():
+    gerente = controller_categorias()
+    gerentenro2 = controller_categorias()
 
     assert id(gerente) == id(gerentenro2), "se aparecer essa mensagem, houve falha no singleton"
-
-    """ if id(gerente) == id(gerentenro2): # teste copiado do refactoring guru
-        print("Singleton works, both variables contain the same instance.")
-    else:
-        print("Singleton failed, variables contain different instances.") """

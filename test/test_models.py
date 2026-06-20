@@ -13,7 +13,7 @@ def test_criacao_midia_factory():
 
     assert isinstance(filme_teste, Midia), "erro na criacao de midia"
 
-   """  print(f"{filme_teste}")
+    """  print(f"{filme_teste}")
 
     filme_teste.estado.iniciar()
     filme_teste.estado.concluir()
