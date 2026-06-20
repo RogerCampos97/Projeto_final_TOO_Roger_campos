@@ -13,8 +13,8 @@ def main():
     main_menu = Menu("Menu Principal", descricao="alo povo de sergipe")
 
     submenu_bibliotecas = Menu("Categorias")
-    submenu_bibliotecas.add_item(MenuItem("Listar Categorias", acao=view_listar_listas_conteudo, args=("controlador_de_listas")))
-    submenu_bibliotecas.add_item(MenuItem("Criar nova categoria", acao=view_criar_lista_conteudo, args=("controlador_de_listas")))
+    submenu_bibliotecas.add_item(MenuItem("Listar Categorias", acao=view_listar_listas_conteudo, args=[controlador_de_listas]))
+    submenu_bibliotecas.add_item(MenuItem("Criar nova categoria", acao=view_criar_lista_conteudo, args=[controlador_de_listas]))
     
 
    
