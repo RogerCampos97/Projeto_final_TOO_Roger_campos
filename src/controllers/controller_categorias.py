@@ -5,7 +5,8 @@ from typing import List
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from controllers.controller_lista import Lista_Conteudo
-from models.midia import Midia
+from models import Midia
+from models import Factory_Midia
 
 class SingletonMeta(type): 
     '''
@@ -112,5 +113,18 @@ class controller_categorias(metaclass=SingletonMeta):
         return(f"Midia adicionada a coleção Padrão")
     
     def add_midia_categoria(self, midia: Midia, index: int):
-        self._bibliotecas[index - 2].add_midia(midia)
-        return(f"Midia adicionada a coleção {self._bibliotecas[index - 2]}")
+        self._bibliotecas[index].add_midia(midia)
+        return (f"Midia adicionada a coleção {self._bibliotecas[index]}")
+    
+    
+    def add_midia(self, titulo_nova_midia: str, index_tipo: int , sel_categoria: int):
+        tipos_midia = Midia.obter_tipo_midia()
+        tipo = tipos_midia[index_tipo]
+        nova_midia = Factory_Midia.nova_midia(titulo_nova_midia, tipo) # manda pro factory o class name str
+
+        if sel_categoria == -1:
+            return (self.add_midia_global(nova_midia))
+        else:
+            msg = (self.add_midia_global(nova_midia))
+            msg += (self.add_midia_categoria(nova_midia, sel_categoria))
+            return msg

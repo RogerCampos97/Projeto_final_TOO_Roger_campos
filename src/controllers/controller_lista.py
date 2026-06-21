@@ -43,7 +43,7 @@ class Lista_Conteudo:
         if midia in self._midia:
             raise ValueError(f"Falha ao adicionar Item, item Já na lista")
         self._midia.append(midia)
-        return(f"Midia adicionada a coleção {self._nome}")
+        return (f"Midia adicionada a coleção {self._nome}")
 
     def remove_midia(self, midia):
         '''

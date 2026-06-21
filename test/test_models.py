@@ -1,15 +1,14 @@
 import os
 import sys
-from abc import ABC, abstractmethod
 # Adiciona a pasta raiz do projeto
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from src.models.factory_midia import factory_Midia
+from src.models.factory_midia import Factory_Midia
 from src.models.midia import Midia
 
 
 def test_criacao_midia_factory():
-    filme_teste = factory_Midia.nova_midia("filme 01", "filme")
+    filme_teste = Factory_Midia.nova_midia("filme 01", "filme")
 
     assert isinstance(filme_teste, Midia), "erro na criacao de midia"
 
