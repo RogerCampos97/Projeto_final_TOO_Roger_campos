@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from models import Midia
+from .midia import Midia
 from .tipos_midia import *
 
 class Factory_Midia(ABC): 

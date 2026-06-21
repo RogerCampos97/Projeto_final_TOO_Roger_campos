@@ -4,7 +4,7 @@ from typing import List
 # Adiciona a pasta raiz do projeto
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from models.midia import Midia
+from models import Midia
 
 class Lista_Conteudo:
     '''

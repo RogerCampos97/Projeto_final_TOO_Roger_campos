@@ -4,7 +4,7 @@ import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 #from src.views.menu import Menu, MenuItem
-from controllers import controller_categorias
+from controllers.controller_categorias import controller_categorias
 
 def criar_lista_conteudo(controlador: controller_categorias):
         try:

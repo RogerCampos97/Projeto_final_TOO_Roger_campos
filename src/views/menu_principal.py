@@ -3,7 +3,7 @@ import sys
 # Adiciona a pasta raiz do projeto
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from controllers import controller_categorias
+from controllers.controller_categorias import controller_categorias
 from views.view_categorias import *
 from views.view_lista import *
 from views import Menu, MenuItem
