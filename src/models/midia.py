@@ -1,18 +1,19 @@
 from abc import ABC, abstractmethod
 from .estado_midia import Estado_Contexto
 from .info_datas import Info_data
+from typing import Optional
 
 class Midia(ABC):
     '''
     Classe abstrata de midia
     '''
-    def __init__(self, titulo: str):
+    def __init__(self, titulo: str, autor: Optional[str], comentario: Optional[str]):
         self.titulo = titulo
-        self._autor: str | None = None
+        self._autor = autor
         self.estado = Estado_Contexto()
         self._datas = Info_data()
+        self._comentario = comentario
         #self.generos: list[Genero] = []
-        self._comentario: str | None = None
     
     @property
     def titulo(self):
@@ -32,6 +33,15 @@ class Midia(ABC):
         if not add_titulo:
             raise ValueError("O nome não pode ser vazio!")
         self._titulo = add_titulo
+
+    @autor.setter
+    def autor(self, add_autor):
+        if not isinstance(add_autor, str):
+            raise TypeError("O nome deve ser texto!")
+        add_autor = " ".join(add_autor.split())
+        if not add_autor:
+            raise ValueError("O nome não pode ser vazio!")
+        self._autor = add_autor
 
     @comentario.setter
     def comentario(self, add_comment):

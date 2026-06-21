@@ -3,11 +3,11 @@ from .midia import Midia
 #                   Anime
 # -------------------------------------------------------------
 class Anime(Midia):
-    def __init__(self, titulo: str): 
+    def __init__(self, titulo, autor, comentario): 
         """ caso não tiver nenhum atributo a mais ou algum codigo
         a ser feito na inicialização posso omitir o init,
         é usado o da classe abstrata """
-        super().__init__(titulo)
+        super().__init__(titulo, autor, comentario)
         self._estudio: str | None = None
     @property
     def estudio(self):
@@ -31,8 +31,8 @@ class Anime(Midia):
 #                   Jogo
 # ------------------------------------------------------------- 
 class Jogo(Midia):
-    def __init__(self, titulo: str):
-        super().__init__(titulo)
+    def __init__(self, titulo, autor, comentario):
+        super().__init__(titulo, autor, comentario)
         self._estudio: str | None = None
     @property
     def estudio(self):
@@ -57,8 +57,8 @@ class Jogo(Midia):
 #                   Livro
 # -------------------------------------------------------------   
 class Livro(Midia):
-    def __init__(self, titulo: str):
-        super().__init__(titulo)
+    def __init__(self, titulo, autor, comentario):
+        super().__init__(titulo, autor, comentario)
         self._editora: str | None = None
     @property
     def editora(self):
@@ -82,8 +82,8 @@ class Livro(Midia):
 #                   Mangá
 # -------------------------------------------------------------  
 class Manga(Midia):
-    def __init__(self, titulo: str):
-        super().__init__(titulo)
+    def __init__(self, titulo, autor, comentario):
+        super().__init__(titulo, autor, comentario)
     def get_nome(self):
         return "Mangá"
     def __eq__(self, outro:object):
@@ -94,8 +94,8 @@ class Manga(Midia):
 #                   Filme
 # ------------------------------------------------------------- 
 class Filme(Midia):
-    def __init__(self, titulo: str):
-        super().__init__(titulo)
+    def __init__(self, titulo, autor, comentario):
+        super().__init__(titulo, autor, comentario)
     def get_nome(self):
         return "Filme"
     def __eq__(self, outro:object):
@@ -106,8 +106,8 @@ class Filme(Midia):
 #                   Sériados
 # ------------------------------------------------------------- 
 class Seriado(Midia):
-    def __init__(self, titulo: str):
-        super().__init__(titulo)
+    def __init__(self, titulo, autor, comentario):
+        super().__init__(titulo, autor, comentario)
         self._temporadas_disponiveis: int | None = None
         self._temporada_assistindo: int | None = None
         self._diretor: str | None = None
