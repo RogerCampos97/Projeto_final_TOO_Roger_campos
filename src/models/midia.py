@@ -60,6 +60,8 @@ class Midia(ABC):
     def get_nome(self) ->str:
         pass
 
+    
+
     def __str__(self):
         return (f"Nome: {self._titulo} [{self.__class__.__name__}]")
     
@@ -72,7 +74,6 @@ class Midia(ABC):
     @classmethod
     def obter_tipo_midia(cls) -> list:
         '''
-        
         metodo para pegar as classes filhas de midia, precisa do __init__.py 
         com o nome das classes se não retorna lista vazia
 

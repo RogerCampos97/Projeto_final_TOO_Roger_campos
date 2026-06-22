@@ -1,4 +1,5 @@
 from typing import Callable, List, Optional
+import os
 '''
     typing = usado para anotar o codigo, não influencia na execucão 
     só ajuda na edicao do codigo e se usar algum programa p/ debug
@@ -69,13 +70,14 @@ class Menu:
         função para mostrar o menu criado
         '''
         while True:
+            Menu.limpar_terminal()
             print(f"\n== {self.titulo} ==")
 
             try:
                 if self.acao_desc is not None:
                     if isinstance(self.acao_desc, str):
                         print(f"# {self.acao_desc}")
-                    elif isinstance(self.acao_desc, Callable):
+                    elif callable(self.acao_desc):
                         self.acao_desc(*self.args, **self.kwargs)
             except Exception as e:
                 print(f"Erro na ação: {e}")
@@ -111,5 +113,20 @@ class Menu:
                         print(f"Erro na ação: {e}")
                 else:
                     print("Opção sem ação definida.")
+                
             else:
                 print("Escolha inválida. Tente novamente.")
+            if self.parent:
+                Menu.pause()
+    
+    @staticmethod
+    def pause():
+        input("Pressione Enter para continuar...")
+    @staticmethod 
+    def limpar_terminal():
+        '''
+        Função para limpar o terminal, funciona tanto em windows como em mac a principio
+        caso não rode comentar a linha abaixo:
+        '''
+        os.system('cls' if os.name == 'nt' else 'clear')# 'nt': Windows, 'posix': Linux/MacOS
+        pass

@@ -8,11 +8,8 @@ from views.view_categorias import *
 from views.view_lista import *
 from views import Menu, MenuItem
 
-def teste_chamar(teste):
-    print(teste)
-
 def main():
-    ct = controller_categorias()
+    ct = controller_categorias() # controlador de listas de midias
 
     
     #main_menu = Menu("Menu Principal", acao_desc=teste_chamar, args=["teste2"])
@@ -27,12 +24,14 @@ def main():
     # submenu midias
     submenu_midias = Menu("Midias")
     submenu_midias.add_item(MenuItem("Adicionar mídia", acao=criar_nova_midia, args=[ct]))
+    submenu_midias.add_item(MenuItem("Buscar midia em toda a Biblioteca", acao=buscar_midia_global, args=[ct]))
+    
     
 
     # itens menu principal
     main_menu.add_item(MenuItem("Categorias", submenu=submenu_listas))
     main_menu.add_item(MenuItem("Midias", submenu=submenu_midias))
-    main_menu.add_item(MenuItem("Contato", acao=lambda: print("Contato: contato@exemplo.com")))
+    #main_menu.add_item(MenuItem("Contato", acao=lambda: print("Contato: contato@exemplo.com")))
 
     main_menu.show()
 

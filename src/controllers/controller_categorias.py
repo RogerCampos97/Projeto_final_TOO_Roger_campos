@@ -77,17 +77,15 @@ class controller_categorias(metaclass=SingletonMeta):
         msg += f"{'='*30}"
         return msg
 
-    def retornar_categoria(self, index: int) -> int | Lista_Conteudo:
+    def retornar_categoria(self, index: int) -> Lista_Conteudo:
         '''
         recebe um indice e retorna uma categoria
         '''
         selected = None
 
-        if 2 <= index <= len(self._bibliotecas):
-            selected = self._bibliotecas[index - 2]
-        elif index == 1:
-            return 1
-        if selected is not None:
+        if 0 >= index <= len(self._bibliotecas):
+            selected = self._bibliotecas[index]
+        if selected:
             return selected
         else:
             raise IndexError("Indice inválido para categoria")
@@ -117,10 +115,11 @@ class controller_categorias(metaclass=SingletonMeta):
         return (f"Midia adicionada a coleção {self._bibliotecas[index]}")
     
     
-    def add_midia(self, titulo_nova_midia: str, index_tipo: int , sel_categoria: int):
+    def add_midia(self, titulo_nova_midia: str, index_tipo: int , sel_categoria: int, autor: str |None, comentario: str |None):
         tipos_midia = Midia.obter_tipo_midia()
         tipo = tipos_midia[index_tipo]
-        nova_midia = Factory_Midia.nova_midia(titulo_nova_midia, tipo) # manda pro factory o class name str
+
+        nova_midia = Factory_Midia.nova_midia(titulo_nova_midia, tipo, autor, comentario) # manda pro factory o class name str
 
         if sel_categoria == -1:
             return (self.add_midia_global(nova_midia))

@@ -16,8 +16,16 @@ def criar_lista_conteudo(controlador: controller_categorias):
             print("Categoria criada com sucesso!!!")
 
 def listar_categorias(controlador: controller_categorias):
-     print(controlador.listar_categorias())
+    try:
+        print(controlador.listar_categorias())
+    except Exception as e:
+        print(e)
 
-def view_midias_buscar_midia_global(controlador: controller_categorias, nome: str):
-    print("chegou")
-    print(controlador.buscar_midia_global(nome))
+def buscar_midia_global(controlador: controller_categorias):
+    try:
+        nome = input("Digite o nome da midia para buscar: ")
+        print(controlador.buscar_midia_global(nome))
+    except Exception as e:
+        print(e)
+    else:
+            print("chegou aqui!!!")

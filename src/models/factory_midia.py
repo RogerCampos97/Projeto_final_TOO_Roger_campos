@@ -24,7 +24,7 @@ class Factory_Midia(ABC):
         ) -> Midia:
         
         # usando un dicionario para salvar as factorys concretas disponiveis
-        dicionario_factorys = {
+        dicionario_factoryes = {
             "Anime": criar_Anime,
             "Jogo": criar_Jogo,
             "Livro": criar_livro,
@@ -33,9 +33,9 @@ class Factory_Midia(ABC):
             "Seriado": criar_seriados
         }
         
-        if tipo in dicionario_factorys:
+        if tipo in dicionario_factoryes:
             # Instancia a factory concreta e chama o método de fabricação passando os argumentos **kwargs
-            fabrica_concreta = dicionario_factorys[tipo]()
+            fabrica_concreta = dicionario_factoryes[tipo]()
             return fabrica_concreta.factory_midia(titulo, autor=autor, comentario=comentario)
             
         raise ValueError(f"Não foi possível criar Mídia: Tipo '{tipo}' é inválido.")
