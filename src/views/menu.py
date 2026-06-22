@@ -1,10 +1,10 @@
 from typing import Callable, List, Optional
 '''
-    typing = usado para anotar o codigo, não influencia na execucão,
+    typing = usado para anotar o codigo, não influencia na execucão 
     só ajuda na edicao do codigo e se usar algum programa p/ debug
     list -> lista
     optional -> opcional, pode ser nada ou alguma coisa
-    callable -> pode ser 'chamado', por ecemplo uma função ou método. ex: fazer_algo()
+    callable -> pode ser 'chamado', por exemplo uma função ou método. ex: fazer_algo()
 '''
 class MenuItem:
     '''
@@ -113,27 +113,3 @@ class Menu:
                     print("Opção sem ação definida.")
             else:
                 print("Escolha inválida. Tente novamente.")
-
-# Exemplo de uso
-""" 
-def say_hello():
-    print("Olá! Você escolheu dizer olá.")
-
-def show_info():
-    print("Informações do sistema... (exemplo)")
-
-def main():
-    main_menu = Menu("Menu Principal")
-
-    services_menu = Menu("Serviços")
-    services_menu.add_item(MenuItem("Design", acao=lambda: print("Serviço: Design")))
-    services_menu.add_item(MenuItem("Desenvolvimento", acao=lambda: print("Serviço: Desenvolvimento")))
-    services_menu.add_item(MenuItem("Marketing", acao=lambda: print("Serviço: Marketing")))
-
-    main_menu.add_item(MenuItem("Início", acao=say_hello))
-    main_menu.add_item(MenuItem("Serviços", submenu=services_menu))
-    main_menu.add_item(MenuItem("Sobre", acao=show_info))
-    main_menu.add_item(MenuItem("Contato", acao=lambda: print("Contato: contato@exemplo.com")))
-
-    main_menu.show() 
-"""

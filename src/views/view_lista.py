@@ -35,7 +35,3 @@ def criar_nova_midia(controlador: controller_categorias):
         print(controlador.add_midia(titulo_nova_midia, tipo-1, sel_categoria-2))# indice correto no view para evitar problemas em testes
     except Exception as e:
         print(f"Erro na ação: {e}")
-
-
-if __name__ == "__main__":
-    criar_nova_midia(controlador= controller_categorias())

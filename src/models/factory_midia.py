@@ -1,118 +1,69 @@
 from abc import ABC, abstractmethod
 from .midia import Midia
 from .tipos_midia import *
-from typing import Optional
+from typing import Optional, Literal
 
 class Factory_Midia(ABC): 
-    #factory method, responsavel pela criação de cada midia
-    def __init__(self, titulo, **kwargs) -> None:
-        self.titulo = titulo
-   
+    
     @abstractmethod
-    def factory_midia(self, titulo,  **kwargs) -> Midia:
+    def factory_midia(self, titulo: str, autor: Optional[str] = None, comentario: Optional[str] = None) -> Midia:
         """
-        O método factory abstrato. Cada tipo de midia tem uma classe concreta 
-        que é responsável pela criação de cada tipo de midia.
-        feito de acordo com o factory method do site refactoring guru
-
-        ***NÃO DEVE SER CHAMADO DIRETAMENTE, USAR MÉTODO nova_midia***
-            
-            Args: 
-                titulo
-            Returns: 
-                objeto do tipo midia
+        O método factory abstrato. Cada tipo de mídia tem uma classe concreta.
         """
         pass
     
+    '''
+    Interface para criar a mídia editor sujere 'autor' e 'comentario'.
+    '''
     @staticmethod
-    def nova_midia(titulo: str, tipo: str, **kwargs):
-        '''
-        classe usada como interface para criar a midia,
-        usa a classe concreta de cada tipo para fazer isso. 
-        Aqui fica a logica que define qual tipo de midia vai ser criada
+    def nova_midia(
+        titulo: str, 
+        tipo: Literal["Anime", "Jogo", "Livro", "Manga", "Filme", "Seriado"], 
+        autor: Optional[str] = None,
+        comentario: Optional[str] = None
+        ) -> Midia:
+        
+        # usando un dicionario para salvar as factorys concretas disponiveis
+        dicionario_factorys = {
+            "Anime": criar_Anime,
+            "Jogo": criar_Jogo,
+            "Livro": criar_livro,
+            "Manga": criar_Manga,
+            "Filme": criar_filme,
+            "Seriado": criar_seriados
+        }
+        
+        if tipo in dicionario_factorys:
+            # Instancia a factory concreta e chama o método de fabricação passando os argumentos **kwargs
+            fabrica_concreta = dicionario_factorys[tipo]()
+            return fabrica_concreta.factory_midia(titulo, autor=autor, comentario=comentario)
+            
+        raise ValueError(f"Não foi possível criar Mídia: Tipo '{tipo}' é inválido.")
 
-            Args: 
-                titulo = nome da midia
-                tipo = tipo da midia
-            Returns: 
-                objeto do tipo midia ou erro caso tipo inválido
-        '''
-        tipo = tipo.strip().lower()
-        match tipo:
-            case "anime":
-                midia = criar_Anime(titulo,**kwargs).factory_midia(titulo, **kwargs)
-            case "jogo":
-                midia = criar_Jogo(titulo,**kwargs).factory_midia(titulo, **kwargs)
-            case "livro":
-                midia = criar_livro(titulo,**kwargs).factory_midia(titulo, **kwargs)
-            case "manga":
-                midia = criar_Manga(titulo,**kwargs).factory_midia(titulo, **kwargs)
-            case "filme":
-                midia = criar_filme(titulo,**kwargs).factory_midia(titulo, **kwargs)
-            case "seriado":
-                midia = criar_seriados(titulo,**kwargs).factory_midia(titulo, **kwargs)
-            case _:
-                raise Exception("Não foi possivel criar Midia")
-        return midia
-    
 #-------------------------------------------------------------- 
-#      Classes concretas dos tipos de midia
+#      Classes concretas dos tipos de mídia
 # -------------------------------------------------------------
-#Anime
+
 class criar_Anime(Factory_Midia): 
-    '''classe concreta usada pelo factory para criar o objeto Anime'''
-    def factory_midia(self, titulo, **kwargs) -> Midia:
-        return Anime(
-            titulo, 
-            kwargs.get("autor"),
-            kwargs.get("comentario")
-            )
-#jogo
+    def factory_midia(self, titulo: str, autor: Optional[str] = None, comentario: Optional[str] = None) -> Midia:
+        return Anime(titulo, autor, comentario)
+
 class criar_Jogo(Factory_Midia): 
-    '''classe concreta usada pelo factory para criar o objeto jogo'''
-    def factory_midia(self, titulo, **kwargs) -> Midia:
-        return Jogo(
-            titulo, 
-            kwargs.get("autor"),
-            kwargs.get("comentario")
-            )
+    def factory_midia(self, titulo: str, autor: Optional[str] = None, comentario: Optional[str] = None) -> Midia:
+        return Jogo(titulo, autor, comentario)
     
 class criar_livro(Factory_Midia):
-    '''classe concreta usada pelo factory para criar o objeto livro'''
-    def factory_midia(self, titulo, **kwargs) -> Midia:
-        return Livro(
-            titulo, 
-            kwargs.get("autor"),
-            kwargs.get("comentario")
-            )
+    def factory_midia(self, titulo: str, autor: Optional[str] = None, comentario: Optional[str] = None) -> Midia:
+        return Livro(titulo, autor, comentario)
     
 class criar_Manga(Factory_Midia):
-    '''classe concreta usada pelo factory para criar o objeto mangá'''
-    def factory_midia(self, titulo, **kwargs) -> Midia:
-        return Manga(
-            titulo, 
-            kwargs.get("autor"),
-            kwargs.get("comentario")
-            )
-#filme
+    def factory_midia(self, titulo: str, autor: Optional[str] = None, comentario: Optional[str] = None) -> Midia:
+        return Manga(titulo, autor, comentario)
+
 class criar_filme(Factory_Midia):
-    '''classe concreta usada pelo factory para criar o objeto filme'''
-    def factory_midia(self, titulo, **kwargs) -> Midia:
-        return Filme(
-            titulo, 
-            kwargs.get("autor"),
-            kwargs.get("comentario")
-            )
-#seriado
+    def factory_midia(self, titulo: str, autor: Optional[str] = None, comentario: Optional[str] = None) -> Midia:
+        return Filme(titulo, autor, comentario)
+
 class criar_seriados(Factory_Midia):
-    '''classe concreta usada pelo factory para criar o objeto seriado'''
-    def factory_midia(self, titulo, **kwargs) -> Midia:
-        return Seriado(
-            titulo, 
-            kwargs.get("autor"),
-            kwargs.get("comentario")
-            )
-
-
-
-
+    def factory_midia(self, titulo: str, autor: Optional[str] = None, comentario: Optional[str] = None) -> Midia:
+        return Seriado(titulo, autor, comentario)

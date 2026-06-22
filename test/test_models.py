@@ -8,11 +8,16 @@ from src.models.midia import Midia
 
 
 def test_criacao_midia_factory_apenas_autor():
-    filme_teste = Factory_Midia.nova_midia("filme 01", "filme")
+    filme_teste = Factory_Midia.nova_midia("filme 01", "Filme")
 
     assert isinstance(filme_teste, Midia), "erro na criacao de midia"
 
 def test_criacao_midia_factory_autor_titulo():
-    anime_teste = Factory_Midia.nova_midia("anime 01", "anime", autor="alo")
+    anime_teste = Factory_Midia.nova_midia("anime 01", "Anime", autor="alo")
 
     assert isinstance(anime_teste, Midia), "erro na criacao de midia"
+
+def test_criacao_midia_factory_autor_titulo_comentario():
+    manga_teste = Factory_Midia.nova_midia("manga 01", "Manga", autor="carlos antonio", comentario="nada")
+
+    assert isinstance(manga_teste, Midia), "erro na criacao de midia"
