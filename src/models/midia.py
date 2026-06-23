@@ -3,6 +3,24 @@ from .estado_midia import Estado_Contexto
 from .info_datas import Info_data
 from typing import Optional
 
+
+""" Método abstrato que força todas as mídias a terem o mesmo setter de dados."""
+class AdicionarDadosExtras(ABC):
+    @abstractmethod
+    def preencher_dados(
+        self, 
+        autor: Optional[str] = None, 
+        comentario: Optional[str] = None, 
+        paginas: Optional[int] = None, 
+        plataforma: Optional[str] = None,
+        editora: Optional[str] = None,
+        volume: Optional[str] = None,
+        estudio: Optional[str] = None,
+        diretor: Optional[str] = None,
+        temporadas_disponiveis: Optional[str] = None,
+	    temporada_assistindo: Optional[str] = None
+    ) -> None: pass
+
 class Midia(ABC):
     '''
     Classe abstrata de midia

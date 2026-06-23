@@ -1,17 +1,35 @@
-from .midia import Midia
+from .midia import Midia, AdicionarDadosExtras
+from typing import overload
 #-------------------------------------------------------------- 
 #                   Anime
 # -------------------------------------------------------------
-class Anime(Midia):
+class Anime(AdicionarDadosExtras, Midia):
     def __init__(self, titulo, autor, comentario): 
         """ caso não tiver nenhum atributo a mais ou algum codigo
         a ser feito na inicialização posso omitir o init,
         é usado o da classe abstrata """
         super().__init__(titulo, autor, comentario)
         self._estudio: str | None = None
+        self.plataforma: str | None = None
     @property
     def estudio(self):
          return self._estudio
+    def preencher_dados(
+        self, 
+        autor = None, 
+        comentario = None, 
+        paginas = None, 
+        plataforma = None,
+        editora = None,
+        volume = None,
+        estudio = None,
+        diretor = None,
+        temporadas_disponiveis = None,
+	    temporada_assistindo = None
+    ) -> None:
+        self.estudio = estudio
+        self.plataforma = plataforma
+        
     @estudio.setter
     def estudio (self, nome):
         if not isinstance(nome, str):
@@ -30,13 +48,32 @@ class Anime(Midia):
 #-------------------------------------------------------------- 
 #                   Jogo
 # ------------------------------------------------------------- 
-class Jogo(Midia):
+class Jogo(AdicionarDadosExtras, Midia):
     def __init__(self, titulo, autor, comentario):
         super().__init__(titulo, autor, comentario)
         self._estudio: str | None = None
+    
     @property
     def estudio(self):
          return self._estudio
+    
+    
+    def preencher_dados(
+        self, 
+        autor = None, 
+        comentario = None, 
+        paginas = None, 
+        plataforma = None,
+        editora = None,
+        volume = None,
+        estudio = None,
+        diretor = None,
+        temporadas_disponiveis = None,
+	    temporada_assistindo = None
+    ) -> None:
+        self.plataforma = plataforma
+        self.estudio = estudio
+
     @estudio.setter
     def estudio (self, nome):
         if not isinstance(nome, str):
