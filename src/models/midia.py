@@ -65,12 +65,12 @@ class Midia(ABC):
         pass """
 
     def exibir_detalhes(self):
-        return (f"[{self.__class__.__name__}]\n"
+        return (f"{'='*30}\n[{self.__class__.__name__}]\n"
                 f"Titulo: {self._titulo}\n"
                 f"Autor: {self._autor if self._autor is not None else "[Desconhecido]"}\n"
                 f"Estado: {self.estado.get_nome()}\n"
                 f"{self._datas.retorna_todas_datas_formatadas()}\n"
-                f"Comentário: {self.comentario if self.comentario is not None else " ..."}")
+                f"Comentário: {self.comentario if self.comentario is not None else " ..."}\n{'='*30}")
     
 
     def __str__(self):

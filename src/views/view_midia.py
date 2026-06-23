@@ -5,4 +5,9 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from models import Midia
 
 def midia_detalhes(midia: Midia):
-    pass
+    try:
+        print(midia.exibir_detalhes())
+        alt = input("Alterar detalhes dessa midia?  1- Sim / enter - Não\nSelecione: ")
+
+    except Exception as e:
+            print(f"Erro na ação: {e}")

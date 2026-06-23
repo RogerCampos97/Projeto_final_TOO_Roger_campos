@@ -10,8 +10,6 @@ from src.models.midia import Midia
 def test_criacao_midia_factory_apenas_autor():
     filme_teste = Factory_Midia.nova_midia("filme 01", "Filme")
 
-    print(filme_teste.estado.get_nome())
-
     print(filme_teste.exibir_detalhes())
 
 
