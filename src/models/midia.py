@@ -77,13 +77,14 @@ class Midia(ABC):
     def get_nome(self) ->str:
         pass
 
+    @abstractmethod
     def exibir_detalhes(self):
         return (f"{'='*30}\n[{self.__class__.__name__}]\n"
                 f"Titulo: {self._titulo}\n"
                 f"Autor: {self._autor if self._autor is not None else "[Desconhecido]"}\n"
                 f"Estado: {self.estado.get_nome()}\n"
                 f"{self._datas.retorna_todas_datas_formatadas()}\n"
-                f"Comentário: {self.comentario if self.comentario is not None else " ..."}\n{'='*30}")
+                f"Comentário: {self.comentario if self.comentario is not None else " ..."}\n")
     
 
     def __str__(self):

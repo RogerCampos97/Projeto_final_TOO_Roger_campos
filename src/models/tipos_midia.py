@@ -71,6 +71,14 @@ class Anime(AdicionarDadosExtras, Midia):
         if not isinstance(outro, Anime):
                 return False
         return (self.titulo == outro.titulo)
+    
+    def exibir_detalhes(self):
+        msg = super().exibir_detalhes()
+        msg += (f"Estudio: {self._estudio if self._estudio is not None else "N/A"}\n"
+                f"Temporadas assistindo: {self._temporada_assistindo if self._temporada_assistindo is not None else "N/A"}\n"
+                f"Temporadas disponiveis: {self._temporadas_disponiveis if self._temporadas_disponiveis is not None else "N/A"}\n{'='*30}\n")
+        return msg
+
 #-------------------------------------------------------------- 
 #                   Jogo
 # ------------------------------------------------------------- 
@@ -125,6 +133,12 @@ class Jogo(AdicionarDadosExtras, Midia):
         if not isinstance(outro, Jogo):
                 return False
         return (self.titulo == outro.titulo)
+    
+    def exibir_detalhes(self):
+        msg = super().exibir_detalhes()
+        msg += (f"Estudio: {self._estudio if self._estudio is not None else "N/A"}\n"
+                f"Plataforma: {self._plataforma if self._plataforma is not None else "N/A"}\n{'='*30}\n")
+        return msg
     
 #-------------------------------------------------------------- 
 #                   Livro
@@ -181,6 +195,12 @@ class Livro(AdicionarDadosExtras, Midia):
         if not isinstance(outro, Livro):
                 return False
         return (self.titulo == outro.titulo)
+    
+    def exibir_detalhes(self):
+        msg = super().exibir_detalhes()
+        msg += (f"Editora: {self._editora if self._editora is not None else "N/A"}\n"
+                f"Volume: {self._volume if self._volume is not None else "N/A"}\n{'='*30}\n")
+        return msg
 #-------------------------------------------------------------- 
 #                   Mangá
 # -------------------------------------------------------------  
@@ -221,6 +241,11 @@ class Manga(AdicionarDadosExtras, Midia):
         if not isinstance(outro, Manga):
                 return False
         return (self.titulo == outro.titulo)
+    
+    def exibir_detalhes(self):
+        msg = super().exibir_detalhes()
+        msg += (f"Volume: {self._volume if self._volume is not None else "N/A"}\n{'='*30}\n")
+        return msg
 #-------------------------------------------------------------- 
 #                   Filme
 # ------------------------------------------------------------- 
@@ -277,6 +302,12 @@ class Filme(AdicionarDadosExtras, Midia):
         if not isinstance(outro, Filme):
                 return False
         return (self.titulo == outro.titulo)
+    
+    def exibir_detalhes(self):
+        msg = super().exibir_detalhes()
+        msg += (f"Estudio: {self._estudio if self._estudio is not None else "N/A"}\n"
+                f"Diretor: {self._diretor if self._diretor is not None else "N/A"}\n{'='*30}\n")
+        return msg
 #-------------------------------------------------------------- 
 #                   Sériados
 # ------------------------------------------------------------- 
@@ -340,8 +371,15 @@ class Seriado(AdicionarDadosExtras, Midia):
 
     def get_nome(self):
         return "Seriados"
+    
     def __eq__(self, outro:object):
         if not isinstance(outro, Seriado):
                 return False
         return (self.titulo == outro.titulo)
 
+    def exibir_detalhes(self):
+        msg = super().exibir_detalhes()
+        msg += (f"Diretor: {self._diretor if self._diretor is not None else "N/A"}\n"
+                f"Temporadas assistindo: {self._temporada_assistindo if self._temporada_assistindo is not None else "N/A"}\n"
+                f"Temporadas disponiveis: {self._temporadas_disponiveis if self._temporadas_disponiveis is not None else "N/A"}\n{'='*30}\n")
+        return msg
