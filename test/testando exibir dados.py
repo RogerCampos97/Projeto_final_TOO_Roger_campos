@@ -26,4 +26,5 @@ def test_criacao_midia_factory_dados_adicionais():
 
 
 #test_criacao_midia_factory_apenas_autor()
+
 test_criacao_midia_factory_dados_adicionais()

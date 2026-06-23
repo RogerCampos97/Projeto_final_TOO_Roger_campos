@@ -7,6 +7,7 @@ from controllers import controller_categorias
 from models import Midia
 from view_categorias import *
 from models import Factory_Midia
+from view_midia import *
 
 def listar_conteudos_categoria(controlador: controller_categorias):
     indice = int(input("Digite o número da lista para ver os conteúdos: "))
@@ -47,5 +48,6 @@ def criar_nova_midia(controlador: controller_categorias):
             print(controlador.append_midia(nova_midia, sel_categoria-2))# indice correto no view para evitar problemas em testes
         else:
             raise ValueError("Indice de categoria para inserção inválido")
+        
     except Exception as e:
         print(f"Erro na ação: {e}")

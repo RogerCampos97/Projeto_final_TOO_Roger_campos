@@ -56,8 +56,11 @@ class Midia(ABC):
     def __eq__(self, outro:object) -> bool:
         pass
     @abstractmethod
-    def get_nome(self) ->str:
+    def get_tipo(self) ->str:
         pass
+
+    def get_nome(self) ->str:
+        return self._titulo
 
     
     @abstractmethod

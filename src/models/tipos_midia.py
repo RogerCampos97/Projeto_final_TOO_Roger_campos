@@ -60,11 +60,13 @@ class Anime(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
-        self.estudio = estudio
+        self._autor = autor
+        self._comentario = comentario
+        self._estudio = estudio
         self._temporada_assistindo = temporada_assistindo
         self._temporadas_disponiveis = temporadas_disponiveis
 
-    def get_nome(self) -> str:
+    def get_tipo(self) -> str:
         return "Anime"
     
     def __eq__(self, outro:object):
@@ -123,10 +125,12 @@ class Jogo(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
+        self._autor = autor
+        self._comentario = comentario
         self._plataforma = plataforma
         self._estudio = estudio
 
-    def get_nome(self):
+    def get_tipo(self):
         return "Jogo"
     
     def __eq__(self, outro:object):
@@ -186,10 +190,12 @@ class Livro(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
+        self._autor = autor
+        self._comentario = comentario
         self._editora = editora
         self._volume = volume
 
-    def get_nome(self):
+    def get_tipo(self):
         return "Livro"
     def __eq__(self, outro:object):
         if not isinstance(outro, Livro):
@@ -233,9 +239,11 @@ class Manga(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
-         self._volume = volume
+        self._autor = autor
+        self._comentario = comentario
+        self._volume = volume
 
-    def get_nome(self):
+    def get_tipo(self):
         return "Mangá"
     def __eq__(self, outro:object):
         if not isinstance(outro, Manga):
@@ -293,6 +301,8 @@ class Filme(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
+        self._autor = autor
+        self._comentario = comentario
         self._diretor = diretor
         self._estudio = estudio
 
@@ -300,7 +310,7 @@ class Filme(Midia):
     def campos_disponiveis(cls) -> list[str]:
         return ["autor", "comentario", "diretor", "estudio"]
 
-    def get_nome(self):
+    def get_tipo(self):
         return "Filme"
     def __eq__(self, outro:object):
         if not isinstance(outro, Filme):
@@ -369,11 +379,13 @@ class Seriado(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
+        self._autor = autor
+        self._comentario = comentario
         self._temporadas_disponiveis = temporadas_disponiveis
         self._temporada_assistindo = temporada_assistindo
         self._diretor = diretor
 
-    def get_nome(self):
+    def get_tipo(self):
         return "Seriados"
     
     def __eq__(self, outro:object):
