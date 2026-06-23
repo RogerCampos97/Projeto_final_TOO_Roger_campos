@@ -59,6 +59,10 @@ class Midia(ABC):
     @abstractmethod
     def get_nome(self) ->str:
         pass
+   
+    """ @abstractmethod
+    def completar_campos(self):
+        pass """
 
     
 
@@ -72,7 +76,7 @@ class Midia(ABC):
     @classmethod -> metodo da classe, recebe ela por padrao
     '''
     @classmethod
-    def obter_tipo_midia(cls) -> list:
+    def obter_tipos_midia_existentes(cls) -> list:
         '''
         metodo para pegar as classes filhas de midia, precisa do __init__.py 
         com o nome das classes se não retorna lista vazia

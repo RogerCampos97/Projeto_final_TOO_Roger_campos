@@ -27,5 +27,3 @@ def buscar_midia_global(controlador: controller_categorias):
         print(controlador.buscar_midia_global(nome))
     except Exception as e:
         print(e)
-    else:
-            print("chegou aqui!!!")

@@ -101,29 +101,16 @@ class controller_categorias(metaclass=SingletonMeta):
                 msg += f"{i} - {md}\n"
         msg += f"{'='*30}"
         return msg
-    
-    def add_midia_global(self, midia: Midia):
+     
+    def append_midia(self,midia: Midia, index: int | None = None ):
         if not isinstance(midia, Midia):
             raise TypeError("Falha ao adicionar Item, objeto de tipo inválido")
         if midia in self._lista_midias:
             raise ValueError(f"Falha ao adicionar Item, item Já na lista")
         self._lista_midias.append(midia)
-        return(f"Midia adicionada a coleção Padrão")
-    
-    def add_midia_categoria(self, midia: Midia, index: int):
-        self._bibliotecas[index].add_midia(midia)
-        return (f"Midia adicionada a coleção {self._bibliotecas[index]}")
-    
-    
-    def add_midia(self, titulo_nova_midia: str, index_tipo: int , sel_categoria: int, autor: str |None, comentario: str |None):
-        tipos_midia = Midia.obter_tipo_midia()
-        tipo = tipos_midia[index_tipo]
+        msg = ("Midia adicionada a coleção Padrão\n")
 
-        nova_midia = Factory_Midia.nova_midia(titulo_nova_midia, tipo, autor, comentario) # manda pro factory o class name str
-
-        if sel_categoria == -1:
-            return (self.add_midia_global(nova_midia))
-        else:
-            msg = (self.add_midia_global(nova_midia))
-            msg += (self.add_midia_categoria(nova_midia, sel_categoria))
-            return msg
+        if index is not None:
+            self._bibliotecas[index].add_midia(midia)
+            msg +=(f"Midia adicionada a coleção {self._bibliotecas[index]}")
+        return msg

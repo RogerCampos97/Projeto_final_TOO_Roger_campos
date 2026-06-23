@@ -22,7 +22,6 @@ class Lista_Conteudo:
     
     @nome.setter
     def nome(self, add_nome):
-        print("chegou no setter")
         if not isinstance(add_nome, str):
             raise TypeError("O nome deve ser texto!")
         add_nome = " ".join(add_nome.split())
