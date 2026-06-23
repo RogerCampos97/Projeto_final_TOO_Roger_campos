@@ -59,9 +59,7 @@ class Midia(ABC):
     def get_nome(self) ->str:
         pass
 
-    """ Método abstrato que força todas as mídias a terem o mesmo setter de dados adicionais
-        Todas as classses concretas de midia possuem pelo menos um dos dados adicionais, 
-        de acordo com cada tipo ele recebe os dados que precisa."""
+    
     @abstractmethod
     def preencher_dados(
         self, 
@@ -74,7 +72,10 @@ class Midia(ABC):
         diretor: Optional[str] = None,
         temporadas_disponiveis: Optional[int] = None,
 	    temporada_assistindo: Optional[int] = None
-    ) -> None: pass
+    ) -> None:""" Método abstrato que força todas as mídias a terem o mesmo setter de dados adicionais
+            Todas as classses concretas de midia possuem pelo menos um dos dados adicionais, 
+            de acordo com cada tipo ele recebe os dados que precisa.""" 
+    pass
 
     @abstractmethod
     def exibir_detalhes(self):
