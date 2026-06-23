@@ -52,7 +52,6 @@ class Anime(AdicionarDadosExtras, Midia):
         self, 
         autor = None, 
         comentario = None, 
-        paginas = None, 
         plataforma = None,
         editora = None,
         volume = None,
@@ -108,7 +107,6 @@ class Jogo(AdicionarDadosExtras, Midia):
         self, 
         autor = None, 
         comentario = None, 
-        paginas = None, 
         plataforma = None,
         editora = None,
         volume = None,
@@ -135,14 +133,14 @@ class Livro(AdicionarDadosExtras, Midia):
     def __init__(self, titulo, autor, comentario):
         super().__init__(titulo, autor, comentario)
         self._editora: str | None = None
-        self._volumes: int | None = None
+        self._volume: int | None = None
 
     @property
     def editora(self):
          return self._editora
     @property
-    def volumes(self):
-         return self._volumes
+    def volume(self):
+         return self._volume
     
     
     @editora.setter
@@ -154,13 +152,13 @@ class Livro(AdicionarDadosExtras, Midia):
             raise ValueError("O nome não pode ser vazio!")
         self._editora = nome
 
-    @volumes.setter
-    def volumes (self, vol):
+    @volume.setter
+    def volume (self, vol):
         if not isinstance(vol, int):
             raise TypeError("volume deve ser numero!")
         if not vol:
             raise ValueError("O nome não pode ser vazio!")
-        self._volumes = vol
+        self._volume = vol
 
     def preencher_dados(
         self, 
@@ -174,8 +172,8 @@ class Livro(AdicionarDadosExtras, Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
-         self._editora = editora
-         self._volumes = volume
+        self._editora = editora
+        self._volume = volume
 
     def get_nome(self):
         return "Livro"
@@ -189,7 +187,19 @@ class Livro(AdicionarDadosExtras, Midia):
 class Manga(AdicionarDadosExtras, Midia):
     def __init__(self, titulo, autor, comentario):
         super().__init__(titulo, autor, comentario)
+        self._volume: int | None = None
 
+    @property
+    def volume(self):
+         return self._volume
+    
+    @volume.setter
+    def volume(self, vol):
+        if not isinstance(vol, int):
+            raise TypeError("volume deve ser numero!")
+        if not vol:
+            raise ValueError("O nome não pode ser vazio!")
+        self._volume = vol
 
     def preencher_dados(
         self, 
@@ -203,7 +213,7 @@ class Manga(AdicionarDadosExtras, Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
-         
+         self._volume = volume
 
     def get_nome(self):
         return "Mangá"
@@ -214,9 +224,53 @@ class Manga(AdicionarDadosExtras, Midia):
 #-------------------------------------------------------------- 
 #                   Filme
 # ------------------------------------------------------------- 
-class Filme(Midia):
+class Filme(AdicionarDadosExtras, Midia):
     def __init__(self, titulo, autor, comentario):
         super().__init__(titulo, autor, comentario)
+        self._diretor : str | None = None
+        self._estudio : str | None = None
+
+    @property
+    def estudio(self):
+         return self._estudio
+
+    @estudio.setter
+    def estudio (self, nome):
+        if not isinstance(nome, str):
+            raise TypeError("O nome deve ser texto!")
+        nome = " ".join(nome.split())
+        if not nome:
+            raise ValueError("O nome não pode ser vazio!")
+        self._estudio = nome
+
+    @property
+    def diretor(self):
+         return self._diretor
+
+    @diretor.setter
+    def diretor (self, nome):
+        if not isinstance(nome, str):
+            raise TypeError("O nome deve ser texto!")
+        nome = " ".join(nome.split())
+        if not nome:
+            raise ValueError("O nome não pode ser vazio!")
+        self._diretor = nome
+
+    def preencher_dados(
+        self, 
+        autor = None, 
+        comentario = None,
+        plataforma = None,
+        editora = None,
+        volume = None,
+        estudio = None,
+        diretor = None,
+        temporadas_disponiveis = None,
+	    temporada_assistindo = None
+    ) -> None:
+        self._diretor = diretor
+        self._estudio = estudio
+         
     def get_nome(self):
         return "Filme"
     def __eq__(self, outro:object):
@@ -226,12 +280,64 @@ class Filme(Midia):
 #-------------------------------------------------------------- 
 #                   Sériados
 # ------------------------------------------------------------- 
-class Seriado(Midia):
+class Seriado(AdicionarDadosExtras, Midia):
     def __init__(self, titulo, autor, comentario):
         super().__init__(titulo, autor, comentario)
         self._temporadas_disponiveis: int | None = None
         self._temporada_assistindo: int | None = None
         self._diretor: str | None = None
+    
+    @property
+    def temporadas_disponiveis(self):
+         return self._temporadas_disponiveis
+    @property
+    def temporadas_assistindo(self):
+         return self.temporadas_assistindo
+    @property
+    def diretor(self):
+        return self._diretor
+
+    @temporadas_assistindo.setter
+    def temporadas_assistindo (self, temp):
+        if not isinstance(temp, int):
+            raise TypeError("volume deve ser numero!")
+        if not temp:
+            raise ValueError("O nome não pode ser vazio!")
+        self._temporadas_assistindo = temp
+    
+    @temporadas_disponiveis.setter
+    def temporadas_disponiveis (self, temp):
+        if not isinstance(temp, int):
+            raise TypeError("volume deve ser numero!")
+        if not temp:
+            raise ValueError("O nome não pode ser vazio!")
+        self._temporadas_disponiveis = temp
+
+    @diretor.setter
+    def diretor (self, nome):
+        if not isinstance(nome, str):
+            raise TypeError("O nome deve ser texto!")
+        nome = " ".join(nome.split())
+        if not nome:
+            raise ValueError("O nome não pode ser vazio!")
+        self._diretor = nome
+
+    def preencher_dados(
+        self, 
+        autor = None, 
+        comentario = None,
+        plataforma = None,
+        editora = None,
+        volume = None,
+        estudio = None,
+        diretor = None,
+        temporadas_disponiveis = None,
+	    temporada_assistindo = None
+    ) -> None:
+        self._temporadas_disponiveis = temporadas_disponiveis
+        self._temporada_assistindo = temporada_assistindo
+        self._diretor = diretor
+
     def get_nome(self):
         return "Seriados"
     def __eq__(self, outro:object):

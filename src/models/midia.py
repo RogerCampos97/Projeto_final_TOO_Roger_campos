@@ -10,8 +10,7 @@ class AdicionarDadosExtras(ABC):
     def preencher_dados(
         self, 
         autor: Optional[str] = None, 
-        comentario: Optional[str] = None, 
-        paginas: Optional[int] = None, 
+        comentario: Optional[str] = None,
         plataforma: Optional[str] = None,
         editora: Optional[str] = None,
         volume: Optional[int] = None,
@@ -77,10 +76,6 @@ class Midia(ABC):
     @abstractmethod
     def get_nome(self) ->str:
         pass
-   
-    """ @abstractmethod
-    def completar_campos(self):
-        pass """
 
     def exibir_detalhes(self):
         return (f"{'='*30}\n[{self.__class__.__name__}]\n"
