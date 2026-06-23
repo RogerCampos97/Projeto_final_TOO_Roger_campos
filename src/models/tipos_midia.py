@@ -10,10 +10,22 @@ class Anime(AdicionarDadosExtras, Midia):
         é usado o da classe abstrata """
         super().__init__(titulo, autor, comentario)
         self._estudio: str | None = None
-        self.plataforma: str | None = None
+        self._temporadas_disponiveis: int | None = None
+        self._temporada_assistindo: int | None = None
+
     @property
     def estudio(self):
          return self._estudio
+    
+    @estudio.setter
+    def estudio (self, nome):
+        if not isinstance(nome, str):
+            raise TypeError("O nome deve ser texto!")
+        nome = " ".join(nome.split())
+        if not nome:
+            raise ValueError("O nome não pode ser vazio!")
+        self._estudio = nome
+
     def preencher_dados(
         self, 
         autor = None, 
@@ -28,19 +40,12 @@ class Anime(AdicionarDadosExtras, Midia):
 	    temporada_assistindo = None
     ) -> None:
         self.estudio = estudio
-        self.plataforma = plataforma
-        
-    @estudio.setter
-    def estudio (self, nome):
-        if not isinstance(nome, str):
-            raise TypeError("O nome deve ser texto!")
-        nome = " ".join(nome.split())
-        if not nome:
-            raise ValueError("O nome não pode ser vazio!")
-        self._estudio = nome
+        self._temporada_assistindo = temporada_assistindo
+        self._temporadas_disponiveis = temporadas_disponiveis
 
     def get_nome(self) -> str:
         return "Anime"
+    
     def __eq__(self, outro:object):
         if not isinstance(outro, Anime):
                 return False
@@ -52,11 +57,30 @@ class Jogo(AdicionarDadosExtras, Midia):
     def __init__(self, titulo, autor, comentario):
         super().__init__(titulo, autor, comentario)
         self._estudio: str | None = None
+        self._plataforma: str | None = None
     
     @property
     def estudio(self):
          return self._estudio
-    
+    @property
+    def plataforma(self):
+         return self._plataforma
+    @estudio.setter
+    def estudio (self, nome):
+        if not isinstance(nome, str):
+            raise TypeError("O nome deve ser texto!")
+        nome = " ".join(nome.split())
+        if not nome:
+            raise ValueError("O nome não pode ser vazio!")
+        self._estudio = nome
+    @plataforma.setter
+    def plataforma (self, nome):
+        if not isinstance(nome, str):
+            raise TypeError("O nome deve ser texto!")
+        nome = " ".join(nome.split())
+        if not nome:
+            raise ValueError("O nome não pode ser vazio!")
+        self._plataforma = nome
     
     def preencher_dados(
         self, 
@@ -71,20 +95,12 @@ class Jogo(AdicionarDadosExtras, Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
-        self.plataforma = plataforma
-        self.estudio = estudio
-
-    @estudio.setter
-    def estudio (self, nome):
-        if not isinstance(nome, str):
-            raise TypeError("O nome deve ser texto!")
-        nome = " ".join(nome.split())
-        if not nome:
-            raise ValueError("O nome não pode ser vazio!")
-        self._estudio = nome
+        self._plataforma = plataforma
+        self._estudio = estudio
 
     def get_nome(self):
         return "Jogo"
+    
     def __eq__(self, outro:object):
         if not isinstance(outro, Jogo):
                 return False
@@ -93,13 +109,20 @@ class Jogo(AdicionarDadosExtras, Midia):
 #-------------------------------------------------------------- 
 #                   Livro
 # -------------------------------------------------------------   
-class Livro(Midia):
+class Livro(AdicionarDadosExtras, Midia):
     def __init__(self, titulo, autor, comentario):
         super().__init__(titulo, autor, comentario)
         self._editora: str | None = None
+        self._volumes: int | None = None
+
     @property
     def editora(self):
          return self._editora
+    @property
+    def volumes(self):
+         return self._volumes
+    
+    
     @editora.setter
     def editora (self, nome):
         if not isinstance(nome, str):
@@ -108,6 +131,30 @@ class Livro(Midia):
         if not nome:
             raise ValueError("O nome não pode ser vazio!")
         self._editora = nome
+
+    @volumes.setter
+    def volumes (self, vol):
+        if not isinstance(vol, int):
+            raise TypeError("volume deve ser numero!")
+        if not vol:
+            raise ValueError("O nome não pode ser vazio!")
+        self._volumes = vol
+
+    def preencher_dados(
+        self, 
+        autor = None, 
+        comentario = None, 
+        paginas = None, 
+        plataforma = None,
+        editora = None,
+        volume = None,
+        estudio = None,
+        diretor = None,
+        temporadas_disponiveis = None,
+	    temporada_assistindo = None
+    ) -> None:
+         self._editora = editora
+         self._volumes = volume
 
     def get_nome(self):
         return "Livro"

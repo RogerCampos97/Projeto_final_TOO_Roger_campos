@@ -14,11 +14,11 @@ class AdicionarDadosExtras(ABC):
         paginas: Optional[int] = None, 
         plataforma: Optional[str] = None,
         editora: Optional[str] = None,
-        volume: Optional[str] = None,
+        volume: Optional[int] = None,
         estudio: Optional[str] = None,
         diretor: Optional[str] = None,
-        temporadas_disponiveis: Optional[str] = None,
-	    temporada_assistindo: Optional[str] = None
+        temporadas_disponiveis: Optional[int] = None,
+	    temporada_assistindo: Optional[int] = None
     ) -> None: pass
 
 class Midia(ABC):
