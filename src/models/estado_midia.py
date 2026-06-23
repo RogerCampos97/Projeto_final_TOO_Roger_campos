@@ -23,7 +23,7 @@ class Estado_Contexto:
     def abandonar(self):
         self._estado_atual.abandonar(self)
     def get_nome(self):
-        self._estado_atual.get_nome()
+        return self._estado_atual.get_nome()
 
 
 class Estado_midia(ABC):    
