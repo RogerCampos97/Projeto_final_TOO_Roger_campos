@@ -85,6 +85,10 @@ class Midia(ABC):
                 f"{self._datas.retorna_todas_datas_formatadas()}\n"
                 f"Comentário: {self.comentario if self.comentario is not None else " ..."}\n")
     
+    @classmethod
+    @abstractmethod
+    def campos_disponiveis(cls) -> list[str]:
+        pass
 
     def __str__(self):
         return (f"Nome: {self._titulo} [{self.__class__.__name__}]")

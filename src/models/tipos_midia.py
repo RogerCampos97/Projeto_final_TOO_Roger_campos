@@ -295,7 +295,11 @@ class Filme(Midia):
     ) -> None:
         self._diretor = diretor
         self._estudio = estudio
-         
+
+    @classmethod
+    def campos_disponiveis(cls) -> list[str]:
+        return ["autor", "comentario", "diretor", "estudio"]
+
     def get_nome(self):
         return "Filme"
     def __eq__(self, outro:object):
