@@ -1,9 +1,9 @@
-from .midia import Midia, AdicionarDadosExtras
+from .midia import Midia
 from typing import overload
 #-------------------------------------------------------------- 
 #                   Anime
 # -------------------------------------------------------------
-class Anime(AdicionarDadosExtras, Midia):
+class Anime(Midia):
     def __init__(self, titulo, autor, comentario): 
         """ caso não tiver nenhum atributo a mais ou algum codigo
         a ser feito na inicialização posso omitir o init,
@@ -82,7 +82,7 @@ class Anime(AdicionarDadosExtras, Midia):
 #-------------------------------------------------------------- 
 #                   Jogo
 # ------------------------------------------------------------- 
-class Jogo(AdicionarDadosExtras, Midia):
+class Jogo(Midia):
     def __init__(self, titulo, autor, comentario):
         super().__init__(titulo, autor, comentario)
         self._estudio: str | None = None
@@ -143,7 +143,7 @@ class Jogo(AdicionarDadosExtras, Midia):
 #-------------------------------------------------------------- 
 #                   Livro
 # -------------------------------------------------------------   
-class Livro(AdicionarDadosExtras, Midia):
+class Livro(Midia):
     def __init__(self, titulo, autor, comentario):
         super().__init__(titulo, autor, comentario)
         self._editora: str | None = None
@@ -204,7 +204,7 @@ class Livro(AdicionarDadosExtras, Midia):
 #-------------------------------------------------------------- 
 #                   Mangá
 # -------------------------------------------------------------  
-class Manga(AdicionarDadosExtras, Midia):
+class Manga(Midia):
     def __init__(self, titulo, autor, comentario):
         super().__init__(titulo, autor, comentario)
         self._volume: int | None = None
@@ -249,7 +249,7 @@ class Manga(AdicionarDadosExtras, Midia):
 #-------------------------------------------------------------- 
 #                   Filme
 # ------------------------------------------------------------- 
-class Filme(AdicionarDadosExtras, Midia):
+class Filme(Midia):
     def __init__(self, titulo, autor, comentario):
         super().__init__(titulo, autor, comentario)
         self._diretor : str | None = None
@@ -311,7 +311,7 @@ class Filme(AdicionarDadosExtras, Midia):
 #-------------------------------------------------------------- 
 #                   Sériados
 # ------------------------------------------------------------- 
-class Seriado(AdicionarDadosExtras, Midia):
+class Seriado(Midia):
     def __init__(self, titulo, autor, comentario):
         super().__init__(titulo, autor, comentario)
         self._temporadas_disponiveis: int | None = None

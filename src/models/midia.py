@@ -3,27 +3,9 @@ from .estado_midia import Estado_Contexto
 from .info_datas import Info_data
 from typing import Optional
 
-
-""" Método abstrato que força todas as mídias a terem o mesmo setter de dados."""
-class AdicionarDadosExtras(ABC):
-    @abstractmethod
-    def preencher_dados(
-        self, 
-        autor: Optional[str] = None, 
-        comentario: Optional[str] = None,
-        plataforma: Optional[str] = None,
-        editora: Optional[str] = None,
-        volume: Optional[int] = None,
-        estudio: Optional[str] = None,
-        diretor: Optional[str] = None,
-        temporadas_disponiveis: Optional[int] = None,
-	    temporada_assistindo: Optional[int] = None
-    ) -> None: pass
-
 class Midia(ABC):
-    '''
-    Classe abstrata de midia
-    '''
+    """Classe abstrata de midias
+    """
     def __init__(self, titulo: str, autor: Optional[str], comentario: Optional[str]):
         self.titulo = titulo
         self._autor = autor
@@ -76,6 +58,23 @@ class Midia(ABC):
     @abstractmethod
     def get_nome(self) ->str:
         pass
+
+    """ Método abstrato que força todas as mídias a terem o mesmo setter de dados adicionais
+        Todas as classses concretas de midia possuem pelo menos um dos dados adicionais, 
+        de acordo com cada tipo ele recebe os dados que precisa."""
+    @abstractmethod
+    def preencher_dados(
+        self, 
+        autor: Optional[str] = None, 
+        comentario: Optional[str] = None,
+        plataforma: Optional[str] = None,
+        editora: Optional[str] = None,
+        volume: Optional[int] = None,
+        estudio: Optional[str] = None,
+        diretor: Optional[str] = None,
+        temporadas_disponiveis: Optional[int] = None,
+	    temporada_assistindo: Optional[int] = None
+    ) -> None: pass
 
     @abstractmethod
     def exibir_detalhes(self):
