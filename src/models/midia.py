@@ -76,10 +76,11 @@ class Midia(ABC):
         diretor: str | None = None,
         temporadas_disponiveis: int | None = None,
 	    temporada_assistindo: int | None = None
-    ) -> None:""" Método abstrato que força todas as mídias a terem o mesmo setter de dados adicionais
+    ) -> None:
+        """ Método abstrato que força todas as mídias a terem o mesmo setter de dados adicionais
             Todas as classses concretas de midia possuem pelo menos um dos dados adicionais, 
-            de acordo com cada tipo ele recebe os dados que precisa.""" 
-    pass
+            de acordo com cada tipo ele recebe os dados que precisa."""
+        self._datas.atualizar_data() # toda vez que inserir novo dado atualiza a data
 
     @abstractmethod
     def exibir_detalhes(self):

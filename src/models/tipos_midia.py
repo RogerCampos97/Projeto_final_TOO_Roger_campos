@@ -63,6 +63,7 @@ class Anime(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
+        super().preencher_dados()
         if titulo is not None: self.titulo = titulo
         if autor is not None: self.autor = autor
         if comentario is not None: self.comentario = comentario
@@ -134,6 +135,7 @@ class Jogo(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
+        super().preencher_dados()
         if titulo is not None: self.titulo = titulo
         if autor is not None: self.autor = autor
         if comentario is not None: self.comentario = comentario
@@ -206,6 +208,7 @@ class Livro(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
+        super().preencher_dados()
         if titulo is not None: self.titulo = titulo
         if autor is not None: self.autor = autor
         if comentario is not None: self.comentario = comentario
@@ -262,6 +265,7 @@ class Manga(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
+        super().preencher_dados()
         if titulo is not None: self.titulo = titulo
         if autor is not None: self.autor = autor
         if comentario is not None: self.comentario = comentario
@@ -330,7 +334,7 @@ class Filme(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
-        
+        super().preencher_dados()
         if titulo is not None: self.titulo = titulo
         if autor is not None: self.autor = autor
         if comentario is not None: self.comentario = comentario
@@ -414,6 +418,7 @@ class Seriado(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
+        super().preencher_dados()
         if titulo is not None: self.titulo = titulo
         if autor is not None: self.autor = autor
         if comentario is not None: self.comentario = comentario
