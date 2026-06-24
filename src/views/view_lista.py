@@ -8,6 +8,7 @@ from src.models.midia import Midia
 from src.views.view_categorias import *
 from src.models.factory_midia import Factory_Midia
 from src.views.view_midia import *
+from src.models.estado_midia import *
 
 def listar_conteudos_categoria(ctrl: controller_categorias):
     indice_lista = int(input("Digite o número da lista para ver os conteúdos: "))
@@ -18,7 +19,7 @@ def listar_conteudos_categoria(ctrl: controller_categorias):
         else:
             lista = ctrl.retornar_categoria(indice_lista-2) # ajuste indice na view
             print(lista.listar_conteudo())
-            
+
         indice_midia = int(input("Deseja fazer alguma ação em alguma mídia?\n"
                     "Digite o indice da midia caso deseje, ENTER caso não deseje: "))
         if indice_midia:
@@ -30,7 +31,13 @@ def listar_conteudos_categoria(ctrl: controller_categorias):
             if acao == 1:
                 midia_detalhes(lista[indice_midia-1])
             elif acao == 2:
-                pass
+                dicion_contexto = ["iniciar", "pausar", "concluir", "abandonar"]
+                print("\n".join(f"{i+1}) {op}" for i, op in enumerate(dicion_contexto)))
+                escolha = int(input("Escolha um estado: "))
+                if 1 <= escolha <= len(dicion_contexto):
+                    act = dicion_contexto[escolha - 1]
+                    metodo_a_chamar = getattr(lista[indice_midia-1].estado, act)
+                    metodo_a_chamar()
             elif acao == 3:
                 print(ctrl.remove_midia(lista[indice_midia-1]))
 

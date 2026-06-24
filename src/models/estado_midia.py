@@ -25,7 +25,6 @@ class Estado_Contexto:
     def get_nome(self):
         return self._estado_atual.get_nome()
 
-
 class Estado_midia(ABC):    
     @abstractmethod
     def iniciar(self, midia):
