@@ -1,4 +1,4 @@
-from .midia import Midia
+from src.models.midia import Midia
 from typing import overload
 #-------------------------------------------------------------- 
 #                   Anime
@@ -21,7 +21,7 @@ class Anime(Midia):
          return self._temporadas_disponiveis
     @property
     def temporadas_assistindo(self):
-         return self.temporadas_assistindo
+         return self._temporadas_assistindo
     
     @estudio.setter
     def estudio (self, nome):
@@ -50,6 +50,7 @@ class Anime(Midia):
 
     def preencher_dados(
         self, 
+        titulo = None,
         autor = None, 
         comentario = None, 
         plataforma = None,
@@ -60,11 +61,16 @@ class Anime(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
+        self._titulo = titulo
         self._autor = autor
         self._comentario = comentario
         self._estudio = estudio
         self._temporada_assistindo = temporada_assistindo
         self._temporadas_disponiveis = temporadas_disponiveis
+    
+    @classmethod
+    def campos_disponiveis(cls) -> list[str]:
+        return ["titulo", "autor", "comentario", "temporada_assistindo", "estudio", "temporadas_disponiveis"]
 
     def get_tipo(self) -> str:
         return "Anime"
@@ -115,6 +121,7 @@ class Jogo(Midia):
     
     def preencher_dados(
         self, 
+        titulo = None,
         autor = None, 
         comentario = None, 
         plataforma = None,
@@ -125,10 +132,15 @@ class Jogo(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
+        self._titulo = titulo
         self._autor = autor
         self._comentario = comentario
         self._plataforma = plataforma
         self._estudio = estudio
+
+    @classmethod
+    def campos_disponiveis(cls) -> list[str]:
+        return ["titulo","autor", "comentario", "plataforma", "estudio"]
 
     def get_tipo(self):
         return "Jogo"
@@ -180,6 +192,7 @@ class Livro(Midia):
 
     def preencher_dados(
         self, 
+        titulo = None,
         autor = None, 
         comentario = None,
         plataforma = None,
@@ -190,10 +203,15 @@ class Livro(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
+        self._titulo = titulo
         self._autor = autor
         self._comentario = comentario
         self._editora = editora
         self._volume = volume
+
+    @classmethod
+    def campos_disponiveis(cls) -> list[str]:
+        return ["titulo","autor", "comentario", "editora", "volume"]
 
     def get_tipo(self):
         return "Livro"
@@ -229,6 +247,7 @@ class Manga(Midia):
 
     def preencher_dados(
         self, 
+        titulo = None,
         autor = None, 
         comentario = None,
         plataforma = None,
@@ -239,9 +258,14 @@ class Manga(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
+        self._titulo = titulo
         self._autor = autor
         self._comentario = comentario
         self._volume = volume
+    
+    @classmethod
+    def campos_disponiveis(cls) -> list[str]:
+        return ["titulo", "autor", "comentario", "volume"]
 
     def get_tipo(self):
         return "Mangá"
@@ -281,7 +305,7 @@ class Filme(Midia):
          return self._diretor
 
     @diretor.setter
-    def diretor (self, nome):
+    def diretor(self, nome):
         if not isinstance(nome, str):
             raise TypeError("O nome deve ser texto!")
         nome = " ".join(nome.split())
@@ -291,6 +315,7 @@ class Filme(Midia):
 
     def preencher_dados(
         self, 
+        titulo = None,
         autor = None, 
         comentario = None,
         plataforma = None,
@@ -301,6 +326,7 @@ class Filme(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
+        self._titulo = titulo
         self._autor = autor
         self._comentario = comentario
         self._diretor = diretor
@@ -308,10 +334,11 @@ class Filme(Midia):
 
     @classmethod
     def campos_disponiveis(cls) -> list[str]:
-        return ["autor", "comentario", "diretor", "estudio"]
+        return ["titulo", "autor", "comentario", "diretor", "estudio"]
 
     def get_tipo(self):
         return "Filme"
+    
     def __eq__(self, outro:object):
         if not isinstance(outro, Filme):
                 return False
@@ -337,7 +364,7 @@ class Seriado(Midia):
          return self._temporadas_disponiveis
     @property
     def temporadas_assistindo(self):
-         return self.temporadas_assistindo
+         return self._temporadas_assistindo
     @property
     def diretor(self):
         return self._diretor
@@ -369,6 +396,7 @@ class Seriado(Midia):
 
     def preencher_dados(
         self, 
+        titulo = None,
         autor = None, 
         comentario = None,
         plataforma = None,
@@ -379,11 +407,16 @@ class Seriado(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
+        self._titulo = titulo
         self._autor = autor
         self._comentario = comentario
         self._temporadas_disponiveis = temporadas_disponiveis
         self._temporada_assistindo = temporada_assistindo
         self._diretor = diretor
+
+    @classmethod
+    def campos_disponiveis(cls) -> list[str]:
+        return ["titulo", "autor", "comentario", "temporadas_disponiveis", "temporada_assistindo"]
 
     def get_tipo(self):
         return "Seriados"

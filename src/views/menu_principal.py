@@ -1,12 +1,13 @@
 import os
 import sys
 # Adiciona a pasta raiz do projeto
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
-from controllers.controller_categorias import controller_categorias
-from views.view_categorias import *
-from views.view_lista import *
-from views import Menu, MenuItem
+from src.controllers.controller_categorias import controller_categorias, Factory_Midia
+from src.views.view_categorias import criar_lista_conteudo, listar_categorias, buscar_midia_global
+from src.views.view_lista import listar_conteudos_categoria, criar_nova_midia
+from src.views.menu import Menu, MenuItem
+from src.models.midia import Midia
 
 def main():
     ct = controller_categorias() # controlador de listas de midias
@@ -22,6 +23,7 @@ def main():
     submenu_midias = Menu("Midias")
     submenu_midias.add_item(MenuItem("Adicionar mídia", acao=criar_nova_midia, args=[ct]))
     submenu_midias.add_item(MenuItem("Buscar midia em toda a Biblioteca", acao=buscar_midia_global, args=[ct]))
+    submenu_midias.add_item(MenuItem("Buscar midia aleatoria", acao=buscar_midia_global, args=[ct]))
     
     
 
@@ -29,7 +31,6 @@ def main():
     main_menu.add_item(MenuItem("Categorias", submenu=submenu_listas))
     main_menu.add_item(MenuItem("Midias", submenu=submenu_midias))
     
-    #main_menu.add_item(MenuItem("Contato", acao=lambda: print("Contato: contato@exemplo.com")))
 
     main_menu.show()
 

@@ -1,1 +1,0 @@
-print(filme_teste.estado.get_nome())

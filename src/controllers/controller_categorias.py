@@ -5,8 +5,8 @@ from typing import List
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from .controller_lista import Lista_Conteudo
-from models import Midia
-from models import Factory_Midia
+from src.models.midia import Midia
+from src.models.factory_midia import Factory_Midia
 
 class SingletonMeta(type): 
     '''
@@ -19,6 +19,10 @@ class SingletonMeta(type):
         if cls not in cls._instances:
             cls._instances[cls] = super().__call__(*args, **kwargs)
         return cls._instances[cls]
+    
+    def _clear_instance(cls):
+        if cls in cls._instances:
+            del cls._instances[cls]
 
 class controller_categorias(metaclass=SingletonMeta):
     def __init__(self) -> None:
@@ -83,7 +87,7 @@ class controller_categorias(metaclass=SingletonMeta):
         '''
         selected = None
 
-        if 0 >= index <= len(self._bibliotecas):
+        if 0 <= index < len(self._bibliotecas):
             selected = self._bibliotecas[index]
         if selected:
             return selected
@@ -102,15 +106,16 @@ class controller_categorias(metaclass=SingletonMeta):
         msg += f"{'='*30}"
         return msg
      
-    def append_midia(self,midia: Midia, index: int | None = None ):
-        if not isinstance(midia, Midia):
+    def append_midia(self,md: Midia, index: int | None = None ):
+        if not isinstance(md, Midia):
+            print("rodou no teste")
             raise TypeError("Falha ao adicionar Item, objeto de tipo inválido")
-        if midia in self._lista_midias:
+        if md in self._lista_midias:
             raise ValueError(f"Falha ao adicionar Item, item Já na lista")
-        self._lista_midias.append(midia)
+        self._lista_midias.append(md)
         msg = ("Midia adicionada a coleção Padrão\n")
 
         if index is not None:
-            self._bibliotecas[index].add_midia(midia)
-            msg +=(f"Midia adicionada a coleção {self._bibliotecas[index]}")
+            add_midia = self._bibliotecas[index].add_midia(md)
+            msg +=(f"Midia adicionada a coleção {self._bibliotecas[index]}") if add_midia else ""
         return msg

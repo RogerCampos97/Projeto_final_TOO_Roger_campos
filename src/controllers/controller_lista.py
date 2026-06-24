@@ -4,7 +4,7 @@ from typing import List
 # Adiciona a pasta raiz do projeto
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from models import Midia
+from src.models.midia import Midia
 
 class Lista_Conteudo:
     '''
@@ -31,18 +31,18 @@ class Lista_Conteudo:
         # usar sempre _nome antes do setter pq se não causa loop infinito, 
         # setter chama ele mesmo e não atribui valor
 
-    def add_midia(self, midia):
+    def add_midia(self, midia_adicionar):
         '''
         fução para adicionar a midia na lista
 
             Args: objeto do tipo mídia
         '''
-        if not isinstance(midia, Midia):
+        """ if not isinstance(midia, Midia):
             raise TypeError("Falha ao adicionar Item, objeto de tipo inválido")
         if midia in self._midia:
-            raise ValueError(f"Falha ao adicionar Item, item Já na lista")
-        self._midia.append(midia)
-        return (f"Midia adicionada a coleção {self._nome}")
+            raise ValueError(f"Falha ao adicionar Item, item Já na lista") """
+        self._midia.append(midia_adicionar)
+        return midia_adicionar
 
     def remove_midia(self, midia):
         '''

@@ -66,15 +66,16 @@ class Midia(ABC):
     @abstractmethod
     def preencher_dados(
         self, 
-        autor: Optional[str] = None, 
-        comentario: Optional[str] = None,
-        plataforma: Optional[str] = None,
-        editora: Optional[str] = None,
-        volume: Optional[int] = None,
-        estudio: Optional[str] = None,
-        diretor: Optional[str] = None,
-        temporadas_disponiveis: Optional[int] = None,
-	    temporada_assistindo: Optional[int] = None
+        titulo: str | None = None,
+        autor: str | None = None, 
+        comentario: str | None = None,
+        plataforma: str | None = None,
+        editora: str | None = None,
+        volume: int | None = None,
+        estudio: str | None = None,
+        diretor: str | None = None,
+        temporadas_disponiveis: int | None = None,
+	    temporada_assistindo: int | None = None
     ) -> None:""" Método abstrato que força todas as mídias a terem o mesmo setter de dados adicionais
             Todas as classses concretas de midia possuem pelo menos um dos dados adicionais, 
             de acordo com cada tipo ele recebe os dados que precisa.""" 

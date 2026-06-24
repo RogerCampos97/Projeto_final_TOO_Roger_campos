@@ -1,13 +1,13 @@
 import os
 import sys
 # Adiciona a pasta raiz do projeto
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
-from controllers import controller_categorias
-from models import Midia
-from view_categorias import *
-from models import Factory_Midia
-from view_midia import *
+from src.controllers.controller_categorias import controller_categorias
+from src.models.midia import Midia
+from src.views.view_categorias import *
+from src.models.factory_midia import Factory_Midia
+from src.views.view_midia import *
 
 def listar_conteudos_categoria(controlador: controller_categorias):
     indice = int(input("Digite o número da lista para ver os conteúdos: "))
@@ -48,6 +48,7 @@ def criar_nova_midia(controlador: controller_categorias):
             print(controlador.append_midia(nova_midia, sel_categoria-2))# indice correto no view para evitar problemas em testes
         else:
             raise ValueError("Indice de categoria para inserção inválido")
+        midia_detalhes(nova_midia)
         
     except Exception as e:
         print(f"Erro na ação: {e}")

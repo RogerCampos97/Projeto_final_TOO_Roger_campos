@@ -1,10 +1,10 @@
 import os
 import sys
 # Adiciona a pasta raiz do projeto
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 
 #from src.views.menu import Menu, MenuItem
-from controllers.controller_categorias import controller_categorias
+from src.controllers.controller_categorias import controller_categorias
 
 def criar_lista_conteudo(controlador: controller_categorias):
         try:

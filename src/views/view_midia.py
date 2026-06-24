@@ -1,9 +1,9 @@
 import os
 import sys
 # Adiciona a pasta raiz do projeto
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from models import Midia
-from models.tipos_midia import *
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+from src.models.midia import Midia
+from src.models.tipos_midia import *
 
 def midia_detalhes(midia: Midia):
     try:
@@ -13,6 +13,7 @@ def midia_detalhes(midia: Midia):
           alt = int(input("Alterar detalhes dessa midia?  1- Sim / 0 - Não\nSelecione: "))
           if alt == 0:
                print("Retornando para tela anterior...")
+               return midia
           elif alt == 1:
                campos = midia.campos_disponiveis()
                coletar_entradas = {}
@@ -22,8 +23,10 @@ def midia_detalhes(midia: Midia):
                     if valor:
                          coletar_entradas[campo] = valor
                midia.preencher_dados(**coletar_entradas)
+               return midia
           else:
                raise ValueError("Entrada inválida")
+          
 
     except Exception as e:
           print(f"Erro na ação: {e}")

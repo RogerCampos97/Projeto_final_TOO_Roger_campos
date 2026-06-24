@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from .midia import Midia
-from .tipos_midia import *
+from src.models.midia import Midia
+from src.models.tipos_midia import *
 from typing import Optional, Literal
 
 class Factory_Midia(ABC): 
