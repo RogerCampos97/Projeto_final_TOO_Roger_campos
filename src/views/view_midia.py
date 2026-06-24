@@ -1,9 +1,11 @@
 import os
 import sys
+import random
 # Adiciona a pasta raiz do projeto
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
 from src.models.midia import Midia
 from src.models.tipos_midia import *
+from src.controllers.controller_categorias import controller_categorias
 
 def midia_detalhes(midia: Midia):
     try:
@@ -28,3 +30,7 @@ def midia_detalhes(midia: Midia):
 
     except Exception as e:
           print(f"Erro na ação: {e}")
+
+def buscar_midia_random(ctrl: controller_categorias):
+     midia = random.choice(ctrl._lista_midias)
+     midia_detalhes(midia)

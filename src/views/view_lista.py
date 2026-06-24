@@ -14,23 +14,25 @@ def listar_conteudos_categoria(ctrl: controller_categorias):
     try:
         if indice_lista == 1:
             print(ctrl.listar_lista_global())
+            lista = ctrl._lista_midias
         else:
             lista = ctrl.retornar_categoria(indice_lista-2) # ajuste indice na view
             print(lista.listar_conteudo())
-            indice_midia = int(input("Deseja fazer alguma ação em alguma mídia?\n"
-                     "Digite o indice da midia caso deseje, ENTER caso não deseje: "))
-            if indice_midia:
-                acao = int(input("Selecione a ação:\n"
-                     "1 - Ver detalhes\n"
-                     "2 - Alterar estado\n"
-                     "3 - EXCLUIR A MIDIA\n" \
-                     "Selecione: "))
-                if acao == 1:
-                    midia_detalhes(lista[indice_midia-1])
-                elif acao == 2:
-                    pass
-                elif acao == 3:
-                    print(ctrl.remove_midia(lista[indice_midia-1]))
+            
+        indice_midia = int(input("Deseja fazer alguma ação em alguma mídia?\n"
+                    "Digite o indice da midia caso deseje, ENTER caso não deseje: "))
+        if indice_midia:
+            acao = int(input("Selecione a ação:\n"
+                    "1 - Ver detalhes\n"
+                    "2 - Alterar estado\n"
+                    "3 - EXCLUIR A MIDIA\n" \
+                    "Selecione: "))
+            if acao == 1:
+                midia_detalhes(lista[indice_midia-1])
+            elif acao == 2:
+                pass
+            elif acao == 3:
+                print(ctrl.remove_midia(lista[indice_midia-1]))
 
     except Exception as e:
         print(f"Erro na ação: {e}")
