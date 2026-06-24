@@ -11,7 +11,7 @@ class Anime(Midia):
         super().__init__(titulo, autor, comentario)
         self._estudio: str | None = None
         self._temporadas_disponiveis: int | None = None
-        self._temporada_assistindo: int | None = None
+        self._temporadas_assistindo: int | None = None
 
     @property
     def estudio(self):
@@ -34,6 +34,7 @@ class Anime(Midia):
 
     @temporadas_assistindo.setter
     def temporadas_assistindo (self, temp):
+        temp = int(temp)
         if not isinstance(temp, int):
             raise TypeError("volume deve ser numero!")
         if not temp:
@@ -42,6 +43,7 @@ class Anime(Midia):
     
     @temporadas_disponiveis.setter
     def temporadas_disponiveis (self, temp):
+        temp = int(temp)
         if not isinstance(temp, int):
             raise TypeError("volume deve ser numero!")
         if not temp:
@@ -70,7 +72,7 @@ class Anime(Midia):
     
     @classmethod
     def campos_disponiveis(cls) -> list[str]:
-        return ["titulo", "autor", "comentario", "temporada_assistindo", "estudio", "temporadas_disponiveis"]
+        return ["titulo", "autor", "comentario", "estudio", "temporada_assistindo", "temporadas_disponiveis"]
 
     def get_tipo(self) -> str:
         return "Anime"
@@ -83,7 +85,7 @@ class Anime(Midia):
     def exibir_detalhes(self):
         msg = super().exibir_detalhes()
         msg += (f"Estudio: {self._estudio if self._estudio is not None else "N/A"}\n"
-                f"Temporadas assistindo: {self._temporada_assistindo if self._temporada_assistindo is not None else "N/A"}\n"
+                f"Temporadas assistindo: {self._temporadas_assistindo if self._temporadas_assistindo is not None else "N/A"}\n"
                 f"Temporadas disponiveis: {self._temporadas_disponiveis if self._temporadas_disponiveis is not None else "N/A"}\n{'='*30}\n")
         return msg
 
@@ -184,6 +186,7 @@ class Livro(Midia):
 
     @volume.setter
     def volume (self, vol):
+        vol = int(vol)
         if not isinstance(vol, int):
             raise TypeError("volume deve ser numero!")
         if not vol:
@@ -239,6 +242,7 @@ class Manga(Midia):
     
     @volume.setter
     def volume(self, vol):
+        vol = int(vol)
         if not isinstance(vol, int):
             raise TypeError("volume deve ser numero!")
         if not vol:
@@ -357,7 +361,7 @@ class Seriado(Midia):
     def __init__(self, titulo, autor, comentario):
         super().__init__(titulo, autor, comentario)
         self._temporadas_disponiveis: int | None = None
-        self._temporada_assistindo: int | None = None
+        self._temporadas_assistindo: int | None = None
         self._diretor: str | None = None
     
     @property
@@ -372,6 +376,7 @@ class Seriado(Midia):
 
     @temporadas_assistindo.setter
     def temporadas_assistindo (self, temp):
+        temp = int(temp)
         if not isinstance(temp, int):
             raise TypeError("volume deve ser numero!")
         if not temp:
@@ -380,6 +385,7 @@ class Seriado(Midia):
     
     @temporadas_disponiveis.setter
     def temporadas_disponiveis (self, temp):
+        temp = int(temp)
         if not isinstance(temp, int):
             raise TypeError("volume deve ser numero!")
         if not temp:
@@ -430,6 +436,6 @@ class Seriado(Midia):
     def exibir_detalhes(self):
         msg = super().exibir_detalhes()
         msg += (f"Diretor: {self._diretor if self._diretor is not None else "N/A"}\n"
-                f"Temporadas assistindo: {self._temporada_assistindo if self._temporada_assistindo is not None else "N/A"}\n"
+                f"Temporadas assistindo: {self._temporadas_assistindo if self._temporadas_assistindo is not None else "N/A"}\n"
                 f"Temporadas disponiveis: {self._temporadas_disponiveis if self._temporadas_disponiveis is not None else "N/A"}\n{'='*30}\n")
         return msg

@@ -7,8 +7,7 @@ from src.models.tipos_midia import *
 
 def midia_detalhes(midia: Midia):
     try:
-        alt = 1
-        while alt != 0:
+        while True:
           print(midia.exibir_detalhes())
           alt = int(input("Alterar detalhes dessa midia?  1- Sim / 0 - Não\nSelecione: "))
           if alt == 0:
@@ -23,7 +22,6 @@ def midia_detalhes(midia: Midia):
                     if valor:
                          coletar_entradas[campo] = valor
                midia.preencher_dados(**coletar_entradas)
-               return midia
           else:
                raise ValueError("Entrada inválida")
           

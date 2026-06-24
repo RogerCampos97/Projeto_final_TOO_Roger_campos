@@ -83,3 +83,6 @@ class Lista_Conteudo:
     
     def __str__(self) -> str:
         return (f"{self._nome}")
+    
+    def __getitem__(self, index):
+        return self._midia[index]
