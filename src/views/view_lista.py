@@ -31,16 +31,22 @@ def listar_conteudos_categoria(ctrl: controller_categorias):
             if acao == 1:
                 midia_detalhes(lista[indice_midia-1])
             elif acao == 2:
-                dicion_contexto = ["iniciar", "pausar", "concluir", "abandonar"]
-                print("\n".join(f"{i+1}) {op}" for i, op in enumerate(dicion_contexto)))
+                dicion_acao = Estado_midia.listar_acoes()
+                print("\n".join(f"{i+1}) {op}" for i, op in enumerate(dicion_acao)))
+
                 escolha = int(input("Escolha um estado: "))
-                if 1 <= escolha <= len(dicion_contexto):
-                    act = dicion_contexto[escolha - 1]
-                    metodo_a_chamar = getattr(lista[indice_midia-1].estado, act)
-                    metodo_a_chamar()
-                    if lista[indice_midia-1].estado.get_nome() == "Concluído":
-                        lista[indice_midia-1]._datas.concluir()
+
+                if isinstance(escolha, int):
+
+                    if 1 <= escolha <= len(dicion_acao):
+                        act = dicion_acao[escolha - 1]
+                        metodo_a_chamar = getattr(lista[indice_midia-1].estado, act)
+                        metodo_a_chamar()
+
+                        if lista[indice_midia-1].estado.get_nome() == "Concluído":
+                            lista[indice_midia-1]._datas.concluir()
             elif acao == 3:
+                
                 print(ctrl.remove_midia(lista[indice_midia-1]))
 
     except Exception as e:

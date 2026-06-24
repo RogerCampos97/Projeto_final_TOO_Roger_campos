@@ -43,6 +43,10 @@ class Estado_midia(ABC):
     def get_nome(self) -> 'str':
         pass
 
+    @staticmethod
+    def listar_acoes() -> list[str]:
+        return ["iniciar", "pausar", "concluir", "abandonar"]
+
     def __str__(self):
         return (f"{self.__class__.__name__}")
    
@@ -92,14 +96,14 @@ class Concluido(Estado_midia):
         return "Concluído"
 
     def iniciar(self, midia):
-        print("Mídia já concluida")
+        midia.set_estado(Reiniciar())
 
     def pausar(self, midia):
         midia.set_estado(Pausa())
 
     def concluir(self, midia):
         print("Mídia concluida")
-        midia.set_estado(Concluido())
+        midia.set_estado(Reiniciar())
 
     def abandonar(self, midia):
         print("Mídia já concluida")
@@ -136,9 +140,9 @@ class Abandonado(Estado_midia):
     def abandonar(self, midia):
         print("Midia já abandonada")
 
-""" class Reiniciar(Estado_midia):
+class Reiniciar(Estado_midia):
     def get_nome(self):
-        return "Reiniciado"
+        return "Reiniciada"
     
     def iniciar(self, midia):
         midia.set_estado(Reiniciar())
@@ -150,5 +154,5 @@ class Abandonado(Estado_midia):
         midia.set_estado(Concluido())
     
     def abandonar(self, midia):
-        print("Midia já foi terminada") """
+        print("Midia já foi terminada")
     

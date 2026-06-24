@@ -12,7 +12,6 @@ class Midia(ABC):
         self.estado = Estado_Contexto()
         self._datas = Info_data()
         self._comentario = comentario
-        #self.generos: list[Genero] = []
     
     @property
     def titulo(self):
