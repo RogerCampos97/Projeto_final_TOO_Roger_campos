@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
-from .estado_midia import Estado_Contexto
-from .info_datas import Info_data
+from src.models.estado_midia import Estado_Contexto
+from src.models.info_datas import Info_data
 from typing import Optional
 
 class Midia(ABC):

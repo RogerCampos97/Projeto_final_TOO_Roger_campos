@@ -44,18 +44,15 @@ class Lista_Conteudo:
         self._midia.append(midia_adicionar)
         return midia_adicionar
 
-    def remove_midia(self, midia):
-        '''
-        fução para remover a midia na lista
-
-            Args: objeto do tipo mídia
-        '''
-        if midia in self._midia:
-            self._midia.remove(midia)
+    def remove_midia(self, midia_dl: Midia):
+        if not isinstance(midia_dl, Midia):
+            raise TypeError("Tipo inválido")
+        if midia_dl in self._midia:
+            self._midia.remove(midia_dl)
             return(f"midia removida da coleção {self._nome}!")
         else:
             return(f"midia não encontrada na coleção {self._nome}")
-        
+
     def listar_conteudo(self):
         '''função para mostrar as midias da lista_conteudo'''
         msg = f"{'='*30}\nMídias na coleção {self._nome}:\n"

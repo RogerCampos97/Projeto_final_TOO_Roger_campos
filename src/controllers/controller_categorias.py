@@ -119,3 +119,18 @@ class controller_categorias(metaclass=SingletonMeta):
             add_midia = self._bibliotecas[index].add_midia(md)
             msg +=(f"Midia adicionada a coleção {self._bibliotecas[index]}") if add_midia else ""
         return msg
+    
+
+    def remove_midia(self, midia_dl: Midia):
+        if not isinstance(midia_dl, Midia):
+            raise TypeError("Tipo inválido")
+        if midia_dl in self._lista_midias:
+            msg = ""
+            self._lista_midias.remove(midia_dl)
+            for lista in self._bibliotecas:
+                if midia_dl in lista:
+                    msg = lista.remove_midia(midia_dl)
+            msg += (f"\nMidia removida da Coleção padrão!")
+            return msg
+        else:
+            return(f"Midia não encontrada na coleção Padrão")
