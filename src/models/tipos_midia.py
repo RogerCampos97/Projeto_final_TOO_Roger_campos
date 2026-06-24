@@ -61,12 +61,12 @@ class Anime(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
-        self._titulo = titulo
-        self._autor = autor
-        self._comentario = comentario
-        self._estudio = estudio
-        self._temporada_assistindo = temporada_assistindo
-        self._temporadas_disponiveis = temporadas_disponiveis
+        if titulo is not None: self.titulo = titulo
+        if autor is not None: self.autor = autor
+        if comentario is not None: self.comentario = comentario
+        if estudio is not None: self.estudio = estudio
+        if temporada_assistindo is not None: self.temporadas_assistindo = temporada_assistindo
+        if temporadas_disponiveis is not None: self.temporadas_disponiveis = temporadas_disponiveis
     
     @classmethod
     def campos_disponiveis(cls) -> list[str]:
@@ -132,11 +132,11 @@ class Jogo(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
-        self._titulo = titulo
-        self._autor = autor
-        self._comentario = comentario
-        self._plataforma = plataforma
-        self._estudio = estudio
+        if titulo is not None: self.titulo = titulo
+        if autor is not None: self.autor = autor
+        if comentario is not None: self.comentario = comentario
+        if plataforma is not None: self.plataforma = plataforma
+        if estudio is not None: self.estudio = estudio
 
     @classmethod
     def campos_disponiveis(cls) -> list[str]:
@@ -203,11 +203,11 @@ class Livro(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
-        self._titulo = titulo
-        self._autor = autor
-        self._comentario = comentario
-        self._editora = editora
-        self._volume = volume
+        if titulo is not None: self.titulo = titulo
+        if autor is not None: self.autor = autor
+        if comentario is not None: self.comentario = comentario
+        if editora is not None: self.editora = editora
+        if volume is not None: self.volume = volume
 
     @classmethod
     def campos_disponiveis(cls) -> list[str]:
@@ -258,10 +258,10 @@ class Manga(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
-        self._titulo = titulo
-        self._autor = autor
-        self._comentario = comentario
-        self._volume = volume
+        if titulo is not None: self.titulo = titulo
+        if autor is not None: self.autor = autor
+        if comentario is not None: self.comentario = comentario
+        if volume is not None: self.volume = volume
     
     @classmethod
     def campos_disponiveis(cls) -> list[str]:
@@ -326,11 +326,12 @@ class Filme(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
-        self._titulo = titulo
-        self._autor = autor
-        self._comentario = comentario
-        self._diretor = diretor
-        self._estudio = estudio
+        
+        if titulo is not None: self.titulo = titulo
+        if autor is not None: self.autor = autor
+        if comentario is not None: self.comentario = comentario
+        if diretor is not None: self.diretor = diretor
+        if estudio is not None: self.estudio = estudio
 
     @classmethod
     def campos_disponiveis(cls) -> list[str]:
@@ -407,12 +408,12 @@ class Seriado(Midia):
         temporadas_disponiveis = None,
 	    temporada_assistindo = None
     ) -> None:
-        self._titulo = titulo
-        self._autor = autor
-        self._comentario = comentario
-        self._temporadas_disponiveis = temporadas_disponiveis
-        self._temporada_assistindo = temporada_assistindo
-        self._diretor = diretor
+        if titulo is not None: self.titulo = titulo
+        if autor is not None: self.autor = autor
+        if comentario is not None: self.comentario = comentario
+        if temporadas_disponiveis is not None: self.temporadas_disponiveis = temporadas_disponiveis
+        if temporada_assistindo is not None: self.temporadas_assistindo = temporada_assistindo
+        if diretor is not None: self.diretor = diretor
 
     @classmethod
     def campos_disponiveis(cls) -> list[str]:

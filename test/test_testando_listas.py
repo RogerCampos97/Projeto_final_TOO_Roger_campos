@@ -5,6 +5,7 @@ import pytest
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from src.models.factory_midia import Factory_Midia
+from src.models.tipos_midia import *
 from src.models.midia import Midia
 #from src.views.view_midia import midia_detalhes
 from src.controllers.controller_categorias import controller_categorias
@@ -19,10 +20,10 @@ def test_criacao_midia_factory_apenas_autor():
 def test_criacao_midia_factory_dados_adicionais():
     filme_teste = Factory_Midia.nova_midia("filme 01", "Filme", "cerginho da pereira nunes", "AAAAAAAAA")
     filme_teste.preencher_dados(diretor="Carl Sagan", estudio="Cosmos Studios")
-
-    assert filme_teste._diretor == "Carl Sagan", "O getter do diretor falhou"
-    assert filme_teste._estudio == "Cosmos Studios", "O getter do estudio falhou"
-    assert filme_teste._autor == "cerginho da pereira nunes", "O getter do autor falhou"
+    assert isinstance(filme_teste, Filme)
+    assert filme_teste.diretor == "Carl Sagan", "O getter do diretor falhou"
+    assert filme_teste.estudio == "Cosmos Studios", "O getter do estudio falhou"
+    assert filme_teste.autor == "cerginho da pereira nunes", "O getter do autor falhou"
 
 
 def test_modificar_midia_em_uma_categoria():
