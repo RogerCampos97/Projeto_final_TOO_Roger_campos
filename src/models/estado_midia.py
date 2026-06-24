@@ -135,4 +135,20 @@ class Abandonado(Estado_midia):
     
     def abandonar(self, midia):
         print("Midia já abandonada")
+
+""" class Reiniciar(Estado_midia):
+    def get_nome(self):
+        return "Reiniciado"
+    
+    def iniciar(self, midia):
+        midia.set_estado(Reiniciar())
+
+    def pausar(self, midia):
+        midia.set_estado(Pausa())
+
+    def concluir(self, midia):
+        midia.set_estado(Concluido())
+    
+    def abandonar(self, midia):
+        print("Midia já foi terminada") """
     

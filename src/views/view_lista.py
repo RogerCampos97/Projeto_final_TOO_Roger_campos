@@ -38,6 +38,8 @@ def listar_conteudos_categoria(ctrl: controller_categorias):
                     act = dicion_contexto[escolha - 1]
                     metodo_a_chamar = getattr(lista[indice_midia-1].estado, act)
                     metodo_a_chamar()
+                    if lista[indice_midia-1].estado.get_nome() == "Concluído":
+                        lista[indice_midia-1]._datas.concluir()
             elif acao == 3:
                 print(ctrl.remove_midia(lista[indice_midia-1]))
 
