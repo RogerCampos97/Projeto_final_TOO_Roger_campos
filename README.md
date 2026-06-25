@@ -24,6 +24,7 @@ Trabalho final disciplina Técnologia de Orienteção a objetos
 
 ## Instruções para execução e testes do sistema.
 * O sistema pode ser testado usando o pytest (ver arquivo testagem em doc)
+* Também pode ser testado só rodando os arquivos 
 * Para rodar o sistema basta rodara o arquivo run.py na pasta raiz ou ir para o arquivo em src\views\menu_principal.py
 ## Detalhamento de Aprendizado
 * Dataclasses como uma alternativa para dados mais rápida
