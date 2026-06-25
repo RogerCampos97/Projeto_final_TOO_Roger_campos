@@ -11,4 +11,22 @@ def test_instanciamento_controlller_categorias_mais_de_uma_vez():
     gerente = controller_categorias()
     gerentenro2 = controller_categorias()
 
+    if id(gerente) == id(gerentenro2): print("Gerente é um singleton")
+    else: print("se aparecer essa mensagem, houve falha no singleton")
+
     assert id(gerente) == id(gerentenro2), "se aparecer essa mensagem, houve falha no singleton"
+
+
+
+
+
+
+
+
+
+
+
+    
+
+if __name__ == "__main__":
+    test_instanciamento_controlller_categorias_mais_de_uma_vez()

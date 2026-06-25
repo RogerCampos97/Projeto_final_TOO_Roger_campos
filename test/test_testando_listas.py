@@ -14,8 +14,16 @@ from src.controllers.controller_categorias import controller_categorias
 
 def test_criacao_midia_factory_apenas_autor():
     filme_teste = Factory_Midia.nova_midia("filme 01", "Filme")
+
+    if isinstance(filme_teste, Midia): print("filme criado com sucesso")
+    else:  print("filme não foi criado")
+
+    if filme_teste.titulo == "filme 01": print("filme com nome correto")
+    else:  print("filme nome erado")
+
     assert isinstance(filme_teste, Midia)
     assert filme_teste.titulo == "filme 01"
+    
 
 def test_criacao_midia_factory_dados_adicionais():
     filme_teste = Factory_Midia.nova_midia("filme 01", "Filme", "cerginho da pereira nunes", "AAAAAAAAA")
@@ -41,3 +49,6 @@ def test_modificar_midia_em_uma_categoria():
     categoria = ctlr.retornar_categoria(0)
     assert nova_midia in categoria._midia, "A mídia não foi adicionada à categoria correta."
     assert nova_midia in ctlr._lista_midias, "A mídia não foi adicionada à lista global."
+
+if __name__ == "__main__":
+    test_criacao_midia_factory_apenas_autor()
