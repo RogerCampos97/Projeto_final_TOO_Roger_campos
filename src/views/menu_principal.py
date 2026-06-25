@@ -38,6 +38,7 @@ def main():
     main_menu.add_item(MenuItem("Midias", submenu=submenu_midias))
     main_menu.add_item(MenuItem("Todas as mídias", acao=lambda: input(f"{ctlr.listar_lista_global()}\n"
                                                                     "--------- Pressione Enter para continuar...")))
+    
     main_menu.add_item(MenuItem("Sobre", acao=lambda: input("# Esse é um programa para salvar as suas mídias!!!\n"
                                 "* Através do menu Categorias Você pode criar listas para classificar o suas midias\n"
                                 "* Para adicionar midias voce deve usar o menu midias\n"
