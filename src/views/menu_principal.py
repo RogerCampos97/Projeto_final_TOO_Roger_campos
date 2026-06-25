@@ -19,16 +19,16 @@ def main():
     main_menu = Menu("Menu Principal", "Salve e catalogue as suas Midias nesse programa!!!")
 
     # submenu listas
-    submenu_listas = Menu("Categorias", acao_desc=listar_categorias, args=[ctlr])
-    submenu_listas.add_item(MenuItem("Detalhar alguma Categoria", acao=listar_conteudos_categoria, args=[ctlr]))
-    submenu_listas.add_item(MenuItem("Criar nova Categoria", acao=criar_lista_conteudo, args=[ctlr]))
-    submenu_listas.add_item(MenuItem("Deletar Categoria", acao=remover_lista_conteudo, args=[ctlr]))
+    submenu_listas = Menu("Categorias", acao_desc=listar_categorias, argumentos=[ctlr])
+    submenu_listas.add_item(MenuItem("Detalhar alguma Categoria", acao=listar_conteudos_categoria, argumentos=[ctlr]))
+    submenu_listas.add_item(MenuItem("Criar nova Categoria", acao=criar_lista_conteudo, argumentos=[ctlr]))
+    submenu_listas.add_item(MenuItem("Deletar Categoria", acao=remover_lista_conteudo, argumentos=[ctlr]))
 
     # submenu midias
     submenu_midias = Menu("Midias")
-    submenu_midias.add_item(MenuItem("Adicionar Mídia", acao=criar_nova_midia, args=[ctlr]))
-    submenu_midias.add_item(MenuItem("Buscar Midia em toda a Biblioteca", acao=buscar_midia_global, args=[ctlr]))
-    submenu_midias.add_item(MenuItem("Me dê uma Midia aleatoria", acao=buscar_midia_random, args=[ctlr]))
+    submenu_midias.add_item(MenuItem("Adicionar Mídia", acao=criar_nova_midia, argumentos=[ctlr]))
+    submenu_midias.add_item(MenuItem("Buscar Midia em toda a Biblioteca", acao=buscar_midia_global, argumentos=[ctlr]))
+    submenu_midias.add_item(MenuItem("Me dê uma Midia aleatoria", acao=buscar_midia_random, argumentos=[ctlr]))
     
     
     

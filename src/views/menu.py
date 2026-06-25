@@ -11,18 +11,18 @@ class MenuItem:
     '''
     classe de item do menu
 
-        Args: 
+        argumentos: 
             titulo: titulo do menu
             acao: o que é feito quando o item correspondente é selecionado, tipo callable(uma função), 
-                    passar os argumentos depois em args ou kwargs.
-            args: argumentos para a funcao enviada no acao
-            kwargs: kwargs para a função enviada no acao
+                    passar os argumentos depois em argumentos ou kwargumentos.
+            argumentos: argumentos para a funcao enviada no acao
+            kwargumentos: kwargumentos para a função enviada no acao
             submenu: submenu desse menu (padrao none)
     '''
-    def __init__(self, titulo: str, acao: Optional[Callable] = None, args=(), submenu: 'Menu' = None):# type: ignore
+    def __init__(self, titulo: str, acao: Optional[Callable] = None, argumentos=(), submenu: 'Menu' = None):# type: ignore
         self.titulo = titulo
         self.acao = acao
-        self.args = tuple(args)
+        self.argumentos = tuple(argumentos)
         self.submenu = submenu
 
     def is_submenu(self) -> bool:
@@ -35,33 +35,33 @@ class Menu:
     '''
     classe do menu principal
 
-        Args:
+        argumentos:
             titulo:
             acao_desc: o que é feito quando o item correspondente é selecionado, tipo callable(uma função), 
-                    passar os argumentos depois em args ou kwargs, ou um str comum para ser exibido
-            args: argumentos para a funcao enviada no acao_desc
-            kwargs: kwargs para a função enviada no acao_desc
-            items: itens do menu, tipo MenuItem
+                    passar os argumentos depois em argumentos ou kwargumentos, ou um str comum para ser exibido
+            argumentos: argumentos para a funcao enviada no acao_desc
+            kwargumentos: kwargumentos para a função enviada no acao_desc
+            itens: itens do menu, tipo MenuItem
             parent: menu pai
     '''
-    def __init__(self, titulo: str, acao_desc: Optional[Callable|str] = None, args=(), 
-                 items: Optional[List[MenuItem]] = None, parent: 'Menu' = None):# type: ignore
+    def __init__(self, titulo: str, acao_desc: Optional[Callable|str] = None, argumentos=(), 
+                 itens: Optional[List[MenuItem]] = None, parent: 'Menu' = None):# type: ignore
         self.titulo = titulo
         self.acao_desc = acao_desc
-        self.args = tuple(args)
-        self.items = items or []
+        self.argumentos = tuple(argumentos)
+        self.itens = itens or []
         self.parent = parent
 
     def add_item(self, item: MenuItem):
         '''
         funcão para adicionar um item ao menu
 
-            Args: 
+            argumentos: 
                 item: recebe um item do tipo MenuItem que pode também ser um submenu
         '''
         if item.is_submenu():
             item.submenu.parent = self
-        self.items.append(item)
+        self.itens.append(item)
 
     def show(self):
         '''
@@ -76,11 +76,11 @@ class Menu:
                     if isinstance(self.acao_desc, str):
                         print(f"# {self.acao_desc}")
                     elif callable(self.acao_desc):
-                        self.acao_desc(*self.args)
+                        self.acao_desc(*self.argumentos)
             except Exception as e:
                 print(f"Erro na ação: {e}")
 
-            for i, item in enumerate(self.items, start=1):
+            for i, item in enumerate(self.itens, start=1):
                 suffix = " >" if item.is_submenu() else ""
                 print(f"{i}. {item.titulo}{suffix}")
             if self.parent:
@@ -100,13 +100,13 @@ class Menu:
                     print("Saindo...")
                     exit(0) # sair do programa sem erros
 
-            if 1 <= choice_num <= len(self.items):
-                selected = self.items[choice_num - 1]
+            if 1 <= choice_num <= len(self.itens):
+                selected = self.itens[choice_num - 1]
                 if selected.is_submenu():
                     selected.submenu.show()
                 elif selected.acao:
                     try:
-                        selected.acao(*selected.args)
+                        selected.acao(*selected.argumentos)
                     except Exception as e:
                         print(f"Erro na ação: {e}")
                 else:
