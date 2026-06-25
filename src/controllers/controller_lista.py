@@ -64,11 +64,11 @@ class Lista_Conteudo:
         msg += f"{'='*30}"
         return msg
     
-    def mover_midia(self):
+    """ def mover_midia(self):
         pass
 
     def selecionar_tipo(self):
-        pass
+        pass """
 
     def __eq__(self, outro:object):
         if not isinstance(outro, Lista_Conteudo):

@@ -41,4 +41,3 @@ def test_modificar_midia_em_uma_categoria():
     categoria = ctlr.retornar_categoria(0)
     assert nova_midia in categoria._midia, "A mídia não foi adicionada à categoria correta."
     assert nova_midia in ctlr._lista_midias, "A mídia não foi adicionada à lista global."
-    assert 

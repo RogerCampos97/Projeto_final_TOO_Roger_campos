@@ -106,7 +106,7 @@ class controller_categorias(metaclass=SingletonMeta):
         msg += f"{'='*30}"
         return msg
      
-    def append_midia(self,md: Midia, index: int | None = None ):
+    def append_midia(self,md: Midia, index: int | None = None):
         if not isinstance(md, Midia):
             print("rodou no teste")
             raise TypeError("Falha ao adicionar Item, objeto de tipo inválido")

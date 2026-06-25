@@ -19,11 +19,10 @@ class MenuItem:
             kwargs: kwargs para a função enviada no acao
             submenu: submenu desse menu (padrao none)
     '''
-    def __init__(self, titulo: str, acao: Optional[Callable] = None, args=(), kwargs=None, submenu: 'Menu' = None):# type: ignore
+    def __init__(self, titulo: str, acao: Optional[Callable] = None, args=(), submenu: 'Menu' = None):# type: ignore
         self.titulo = titulo
         self.acao = acao
         self.args = tuple(args)
-        self.kwargs = dict(kwargs or {})
         self.submenu = submenu
 
     def is_submenu(self) -> bool:
@@ -45,12 +44,11 @@ class Menu:
             items: itens do menu, tipo MenuItem
             parent: menu pai
     '''
-    def __init__(self, titulo: str, acao_desc: Optional[Callable|str] = None, args=(), kwargs=None, 
+    def __init__(self, titulo: str, acao_desc: Optional[Callable|str] = None, args=(), 
                  items: Optional[List[MenuItem]] = None, parent: 'Menu' = None):# type: ignore
         self.titulo = titulo
         self.acao_desc = acao_desc
         self.args = tuple(args)
-        self.kwargs = dict(kwargs or {})
         self.items = items or []
         self.parent = parent
 
@@ -78,7 +76,7 @@ class Menu:
                     if isinstance(self.acao_desc, str):
                         print(f"# {self.acao_desc}")
                     elif callable(self.acao_desc):
-                        self.acao_desc(*self.args, **self.kwargs)
+                        self.acao_desc(*self.args)
             except Exception as e:
                 print(f"Erro na ação: {e}")
 
@@ -108,7 +106,7 @@ class Menu:
                     selected.submenu.show()
                 elif selected.acao:
                     try:
-                        selected.acao(*selected.args, **selected.kwargs)
+                        selected.acao(*selected.args)
                     except Exception as e:
                         print(f"Erro na ação: {e}")
                 else:
