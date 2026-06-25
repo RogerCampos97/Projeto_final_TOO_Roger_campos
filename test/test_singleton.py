@@ -8,6 +8,7 @@ from src.controllers.controller_categorias import controller_categorias
 
 
 def test_instanciamento_controlller_categorias_mais_de_uma_vez():
+    controller_categorias._clear_instance() 
     gerente = controller_categorias()
     gerentenro2 = controller_categorias()
 

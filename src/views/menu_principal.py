@@ -12,9 +12,16 @@ from src.views.menu import Menu, MenuItem
 def main():
     ctlr = controller_categorias() # controlador de listas de midias
 
+    #categorias colocando para mostrar:
     ctlr.criar_categoria("nova_categoria")
-    nova_midia = Factory_Midia.nova_midia("anime", "Anime","eeeeeee", "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee")
+    ctlr.criar_categoria("outra categoria")
+    nova_midia = Factory_Midia.nova_midia("anime", "Anime","eeeeeee", "Descrição")
+    outra_midia = Factory_Midia.nova_midia("jogo", "Jogo","AB", "Descrição")
     ctlr.append_midia(nova_midia, 0)
+    ctlr.append_midia(outra_midia, 1)
+
+
+
 
     main_menu = Menu("Menu Principal", "Salve e catalogue as suas Midias nesse programa!!!")
 

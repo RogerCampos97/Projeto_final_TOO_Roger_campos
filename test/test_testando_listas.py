@@ -70,6 +70,12 @@ def test_modificar_midia_em_uma_categoria():
     assert nova_midia in categoria._midia, "A mídia não foi adicionada à categoria correta."
     assert nova_midia in ctlr._lista_midias, "A mídia não foi adicionada à lista global."
 
+
+
+
+
+
+
 if __name__ == "__main__":
     test_criacao_midia_factory_apenas_autor()
     test_criacao_midia_factory_dados_adicionais()

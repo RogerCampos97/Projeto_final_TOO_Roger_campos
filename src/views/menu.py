@@ -68,7 +68,7 @@ class Menu:
         função para mostrar o menu criado
         '''
         while True:
-            Menu.limpar_terminal()
+            # Menu.limpar_terminal()
             print(f"\n== {self.titulo} ==")
 
             try:

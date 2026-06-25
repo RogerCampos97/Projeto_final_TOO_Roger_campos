@@ -33,6 +33,15 @@ def test_criacao_midia_factory_autor_titulo_comentario():
 
 
 
+def test_criar_outros_tipo():
+    livro = Factory_Midia.nova_midia("livro 01", "Livro", autor="carlos antonio", comentario="nada")
+    assert isinstance(livro, Midia), "erro na criacao de midia"
+    jogo = Factory_Midia.nova_midia("jogo 01", "Jogo", autor="carlos antonio", comentario="nada")
+    assert isinstance(jogo, Midia), "erro na criacao de midia"
+    seriado = Factory_Midia.nova_midia("seriado 01", "Seriado", autor="carlos antonio", comentario="nada")
+    assert isinstance(seriado, Midia), "erro na criacao de midia"
+
+
 if __name__ == "__main__":
     test_criacao_midia_factory_apenas_autor()
     test_criacao_midia_factory_autor_titulo()
